@@ -1,5 +1,11 @@
 # Hi.
 This is a kind of my resume.
 
-At this point, I don't have anything to say, so.. goodbye.
-# bye :)
+Starting studies at The Odin Project with JS and Ruby.
+Also continue studing with the Alura content for JS/Front-End and Python.
+
+Maybe some UX too.
+
+Nothing to detail yet.
+
+ bye :)
