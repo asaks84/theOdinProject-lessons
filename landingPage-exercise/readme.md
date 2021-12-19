@@ -3,4 +3,4 @@
 Using flexbox.
 
 ### Exercise
-![image exercise] (./odin-project.png)
+![image exercise](./odin-project.png)
