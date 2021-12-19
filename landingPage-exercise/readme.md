@@ -2,5 +2,5 @@
 
 Using flexbox.
 
-### Exercise
+### Exercise: 
 ![image exercise](./odin-project.png)

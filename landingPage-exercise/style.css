@@ -1,0 +1,68 @@
+/* General settings */
+* {
+    font-family: 'Roboto', sans-serif;
+    /* margin: 0;
+    padding: 0; */
+}
+.center{
+    max-width: 960px;
+    margin: auto;
+}
+.flex-content {
+    display: flex;
+}
+
+/* Header & footer */
+#hero,
+footer {
+    background-color: #1f2937;
+    color: #e5e7eb;
+}
+#hero h1,
+header .logo {
+    color: #f9faf8;
+}
+header .logo {
+    font-size: 24px;
+    display: block;
+    flex: 1 auto;
+}
+.logo h4 {
+    margin: 16px;
+}
+header ul{
+    flex: 1;
+    display: flex;
+}
+header ul li {
+    display: inline;
+    list-style: none;
+    flex: auto;
+}
+
+/* Highlight Content */
+#hero h1{
+    font-size: 48px;
+    font-weight: 900;
+}
+.hero-content{
+    flex: 1;
+    margin: 15px;
+}
+.hero-content.flex-content {
+    justify-content: space-between;
+}
+.imagebox{
+    background: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+}
+.imagebox p {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    margin: 0;
+}
+
+/* Random Information */
