@@ -1,16 +1,36 @@
 /* General settings */
 * {
     font-family: 'Roboto', sans-serif;
-    /* margin: 0;
-    padding: 0; */
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
 }
 .center{
-    max-width: 960px;
+    max-width: 1024px;
     margin: auto;
 }
 .flex-content {
     display: flex;
 }
+
+button {
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-weight: 100;
+    padding: 7px 30px;
+    background-color: #3882f6;
+    box-shadow: 1px 1px 20px 0 #00000063;
+    border: solid #3882f6 1px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+
+ }
+ 
+ button:hover {
+    background-image: linear-gradient(top, #1E62D0, #3D94F6);
+ }
 
 /* Header & footer */
 #hero,
@@ -27,17 +47,31 @@ header .logo {
     display: block;
     flex: 1 auto;
 }
-.logo h4 {
-    margin: 16px;
+.logo h3,
+header ul{ 
+    margin-top: 20px;
+}
+.logo h3 {
+    font-size: 24px;
+    font-weight: 900;
 }
 header ul{
     flex: 1;
     display: flex;
+    text-align: right;
 }
 header ul li {
     display: inline;
     list-style: none;
     flex: auto;
+}
+
+footer {
+    text-align: center;
+    margin: auto;
+}
+footer p {
+    padding: 25px 0;
 }
 
 /* Highlight Content */
@@ -47,13 +81,16 @@ header ul li {
 }
 .hero-content{
     flex: 1;
-    margin: 15px;
+    margin: 100px 0;
 }
 .hero-content.flex-content {
     justify-content: space-between;
 }
+.hero-content:first-child{
+    margin-right: 30px;
+}
 .imagebox{
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.24);
     text-align: center;
     position: relative;
 }
