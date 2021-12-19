@@ -103,7 +103,33 @@ footer p {
 }
 
 /* Random Information */
-
+#boxes {
+    padding: 60px 0;
+}
+main h2 {
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+}
+main .flex-content{ justify-content: space-evenly;}
+.main-boxes{
+    flex: 1;
+    margin-bottom: 20px;
+}
+.main-boxes .images{
+    border: 2px solid #3882f6;
+    border-radius: 30px;
+    width: 150px;
+    height: 150px;
+}
+.main-boxes em {
+    display: block;
+    width: 150px;
+    font-size:15px;
+    font-style: normal;
+    text-align: center;
+}
 /* Quotes */
 #quotes {
     background-color: #e5e7eb;
