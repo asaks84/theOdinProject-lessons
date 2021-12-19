@@ -103,3 +103,24 @@ footer p {
 }
 
 /* Random Information */
+
+/* Quotes */
+#quotes {
+    background-color: #e5e7eb;
+}
+.quote {
+    padding: 100px 130px;
+}
+.quote p {
+    /* text-align: justify; */
+    font-size: 36px;
+    font-weight: 300;
+    font-style: italic;
+}
+.quote em {
+    display: block;
+    font-weight: bold;
+    text-align: right;
+    font-style: normal;
+    font-size: 24px;
+}
