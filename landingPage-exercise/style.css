@@ -20,7 +20,6 @@ button {
     padding: 7px 30px;
     background-color: #3882f6;
     box-shadow: 1px 1px 20px 0 #00000063;
-    border: solid #3882f6 1px;
     text-decoration: none;
     text-align: center;
     margin-top: 15px;
@@ -89,12 +88,15 @@ footer p {
 .hero-content:first-child{
     margin-right: 30px;
 }
+.hero-content button{
+    border: solid #3882f6 1px;
+}
 .imagebox{
     background: rgba(255, 255, 255, 0.24);
     text-align: center;
-    position: relative;
 }
-.imagebox p {
+.relative { position: relative ;}
+.middle {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -112,10 +114,12 @@ main h2 {
     text-align: center;
     margin-bottom: 60px;
 }
-main .flex-content{ justify-content: space-evenly;}
+#boxes .flex-content{
+    justify-content: space-evenly;
+}
 .main-boxes{
     flex: 1;
-    margin-bottom: 20px;
+    max-width: 150px;
 }
 .main-boxes .images{
     border: 2px solid #3882f6;
@@ -149,4 +153,27 @@ main .flex-content{ justify-content: space-evenly;}
     text-align: right;
     font-style: normal;
     font-size: 24px;
+}
+
+/* ACTION */
+.signup{
+    background-color: #3882f6;
+    border-radius: 20px;
+    margin: 100px 0;
+    color: white;
+    align-items: center;
+}
+
+.signup .text{
+    margin-left: 100px;
+}
+
+.signup h3{
+    font-size: 30px;
+}
+.signup button{
+    border: white solid 2px;
+    margin: 50px;
+    margin-left: auto; /* positioning elementos on flexbox on the right */
+
 }
