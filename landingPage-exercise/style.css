@@ -93,14 +93,12 @@ footer p {
 }
 .imagebox{
     background: rgba(255, 255, 255, 0.24);
-    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 .relative { position: relative ;}
 .middle {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
     margin: 0;
 }
 
@@ -174,6 +172,5 @@ main h2 {
 .signup button{
     border: white solid 2px;
     margin: 50px;
-    margin-left: auto; /* positioning elementos on flexbox on the right */
-
+    margin-left: auto; /* positioning elements on flexbox on the right /*
 }
