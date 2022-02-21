@@ -10,7 +10,3 @@ Maybe some UX too.
 Nothing to detail yet.
 
  bye :)
- 
- ```
- ps: need to reorganize the repo. =/
- ```
