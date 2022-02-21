@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Odin Project - Practice Excercise - FizzBuzz</title>
+</head>
+<body>
+    <div id="echo"></div>
+    <button id="dataEnter" onclick="idClick(this.id)">Data enter</button>
+
+    <script>
+        function fizzBuzz(){
+            const lastNumber = prompt("Enter the last number of the game");
+            const arrayNumers = [" "];
+            for(i=1; i<=lastNumber; i++){
+                if(i%15 === 0) { 
+                    arrayNumers[i-1] = 'FizzBuzz'
+                } else if(i%3 === 0) { 
+                    arrayNumers[i-1] = 'Fizz'
+                } else if(i%5 === 0) { 
+                    arrayNumers[i-1] = 'Buzz'
+                } else arrayNumers[i-1] = i;
+            }
+            const result = arrayNumers.join(", ");
+            document.getElementById('echo').innerHTML = result;
+        }
+        document.getElementById('dataEnter').addEventListener('click', fizzBuzz);
+    </script>
+</body>
+</html>
