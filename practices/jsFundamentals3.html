@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Odin Project - JS Fundamentals Part 3</title>
+</head>
+<body>
+
+    <!-- see the results on echo -->
+    <div id="echo"></div>
+
+    <!-- buttons to call functions according to the exercise
+         1. Write a function called add7 that takes one number and returns that number + 7.
+         2. Write a function called multiply that takes 2 numbers and returns their product.
+         3. Write a function called capitalize that takes a string and returns that string with only the first letter capitalized. 
+            Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
+         4. Write a function called lastLetter that takes a string and returns the very last letter of that string.
+     -->
+    <button id="add7" onClick="ID_click(this.id)">Add 7</button>
+    <button id="multiply" onClick="ID_click(this.id)">Multiply</button>
+    <button id="capitalize" onClick="ID_click(this.id)">Capitalize</button>
+    <button id="lastletter" onClick="ID_click(this.id)">Last Letter</button>
+    <script>
+        
+        // exercise functions
+        function add7 (echo){
+            return +echo + 7;
+        }
+        function multiply (num1, num2) {
+            return num1 * num2;
+        }
+        function capitalize (aString) {
+            const lowerCase = aString.toLowerCase();
+            const toArray = lowerCase.split(" ");
+
+            for(i = 0; i < toArray.length; i++){
+                toArray[i] =  toArray[i].charAt(0).toUpperCase() + toArray[i].slice(1);
+            }
+            const capitalized = toArray.join(" ");
+            return capitalized;
+        }
+        function lastLetter(aString){
+            // const stringLength = aSting.length;
+            // const lastLetter = aSting.slice(stringLength-1);
+            // return lastLetter;
+
+            const toArray = aString.split(" ");
+
+            for(i=0; i<toArray.length; i++){
+                toArray[i] = toArray[i].slice(toArray[i].length-1);
+            }
+            const result = toArray.join(" ");
+            return result;
+        }
+
+        // calling functions and setting parameters
+        function callAdd7 (){
+            const selectNumber = prompt('Type a number');
+            document.getElementById("echo").innerHTML = add7(selectNumber);            
+        } 
+        function callMultiply(){
+            const selectNumber1 = prompt('Type a number');
+            const selectNumber2 = prompt('Type a number');
+            document.getElementById("echo").innerHTML = multiply(selectNumber1, selectNumber2);            
+        }
+        function callCapitalize(){
+            const typedStr = prompt('Type something');
+            document.getElementById("echo").innerHTML = capitalize(typedStr);
+        }
+        function callLastLetter(){
+            const typedStr = prompt('Type something');
+            document.getElementById("echo").innerHTML = lastLetter(typedStr);
+        }
+
+        // identifying button function
+        function ID_click(clicked){
+            const buttonID = clicked;
+            if(buttonID == "add7") { callAdd7(); }
+            if(buttonID == "multiply") { callMultiply(); }
+            if(buttonID == "capitalize") { callCapitalize(); }
+            if(buttonID == "lastletter") { callLastLetter(); }
+        }
+    </script>
+</body>
+</html>
