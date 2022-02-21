@@ -1,4 +1,5 @@
-# Hi.
+
+## Hi.
 This is a kind of my resume.
 
 Starting studies at The Odin Project with JS and Ruby.
@@ -9,3 +10,7 @@ Maybe some UX too.
 Nothing to detail yet.
 
  bye :)
+ 
+ ```
+ ps: need to reorganize the repo. =/
+ ```
