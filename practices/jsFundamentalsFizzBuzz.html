@@ -23,7 +23,7 @@
                     arrayNumers[i-1] = 'Buzz'
                 } else arrayNumers[i-1] = i;
             }
-            const result = arrayNumers.join(", ");
+            const result = arrayNumers.join('<br>');
             document.getElementById('echo').innerHTML = result;
         }
         document.getElementById('dataEnter').addEventListener('click', fizzBuzz);
