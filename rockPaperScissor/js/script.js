@@ -1,5 +1,6 @@
 let pcPoints = 0;
 let playerPoints = 0;
+let roundCounter = 1;
 
 function computerPlay() {
     const randomNum = Math.floor(Math.random() * 3);
@@ -27,9 +28,7 @@ function playRound() {
     const pcMove = computerPlay();
     const playerMove = playerSelection();
 
-    console.log(`PC: ${pcMove}`);
-    console.log(`YOU: ${playerMove}`);
-
+    console.warn(`Round: ${roundCounter}`)
     // creating the conditions
     if (pcMove == playerMove) {
         console.log("It's a Tie!")
@@ -45,16 +44,19 @@ function playRound() {
         console.log('You Win!');
     }
 
-    console.log(`POINTS:\nPC: ${pcPoints}\nUSER: ${playerPoints}`)
+    console.log(`PC: ${pcMove}`);
+    console.log(`YOU: ${playerMove}`);
+    console.log(`POINTS:\nPC: ${pcPoints}\nUSER: ${playerPoints}`);
 }
 function game() {
     for(i=0;i<5;i++){
         playRound();
+        ++roundCounter;
     }
     if(pcPoints > playerPoints) {
-        console.log('You lost the game!')
+        console.error('You lost the game!')
     } else if(pcPoints < playerPoints) {
-        console.log('You won the game!')
-    } else { console.log('No winner for now!') }
+        console.error('You won the game!')
+    } else { console.error('No winner for now!') }
 }
 game();
