@@ -35,10 +35,9 @@ function playRound() {
     } else if (
         (pcMove == 'ROCK' && playerMove == 'SCISSOR') ||
         (pcMove == 'PAPER' && playerMove == 'ROCK') ||
-        (pcMove == 'SCISSOR' && playerMove == 'PAPER')
-    ) {
-        ++pcPoints;
-        console.log('You Lose!');
+        (pcMove == 'SCISSOR' && playerMove == 'PAPER')) {
+            ++pcPoints;
+            console.log('You Lose!');
     } else {
         ++playerPoints;
         console.log('You Win!');

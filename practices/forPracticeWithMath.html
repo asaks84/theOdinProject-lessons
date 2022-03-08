@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://mdn.github.io/learning-area/javascript/building-blocks/loops/integer-squares.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Integer squares generator</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+  <label for="number">Enter number: </label>
+  <input id="number" type="text">
+  <button>Generate integer squares</button>
+
+  <p> </p>
+
+
+    <script>
+    const para = document.querySelector('p'); // querySelector selects the 1st element on HTML
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
+
+    btn.addEventListener('click', () => { // by clicking, start a function () setted by an arrow
+      para.textContent = 'Output: '; // setting a new paragraph content
+      const num = input.value; // the input HTML value to a const
+      input.value = ''; 
+      input.focus();
+      for (let i = 1; i <= num; i++) {
+        let sqRoot = Math.sqrt(i);
+        if (Math.floor(sqRoot) !== sqRoot) { // using Math.floor to filter only integer values on squares
+          continue; // if it's not an integer, back to the start of the loop and ignore the next steps
+        }
+        para.textContent += `${i} `; // incrementing the paragraph content, like a concat directly on the html
+      }
+    });
+
+    </script>
+
+  
+
+</body></html>
