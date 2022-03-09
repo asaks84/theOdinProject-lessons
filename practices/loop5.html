@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Loops: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+      /*
+      In this next task, we want you to write a simple program that, 
+      given a name, searches an array of objects containing 
+      names and phone numbers (phonebook) and, if it finds the name, 
+      outputs the name and phone number into the paragraph (para) 
+      and then exits the loop before it has run its course.
+      */
+    const searchName = 'Mustafa';
+    const para = document.createElement('p');
+
+    const phonebook = [
+      { name : 'Chris', number : '1549' },
+      { name : 'Li Kang', number : '9634' },
+      { name : 'Anne', number : '9065' },
+      { name : 'Francesca', number : '3001' },
+      { name : 'Mustafa', number : '6888' },
+      { name : 'Tina', number : '4312' },
+      { name : 'Bert', number : '7780' },
+      { name : 'Jada', number : '2282' },
+    ]
+
+    // Add your code here
+    for(i=0; i < phonebook.length; i++ ) {
+        if( searchName != phonebook[i].name) {
+            continue            
+        } para.innerHTML = `<strong>${phonebook[i].name}:</strong> ${phonebook[i].number}`; 
+    }
+    // Don't edit the code below here!
+    const section = document.querySelector('section');
+    section.appendChild(para);
+  </script>
+
+</html>
