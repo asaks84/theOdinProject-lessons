@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=script, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="admitted"></p>
+    <p class="refused"></p>
+    <script>
+        const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+        const admitted = document.querySelector('.admitted');
+        const refused = document.querySelector('.refused');
+        admitted.textContent = 'Admit: ';
+        refused.textContent = 'Refuse: '
+
+        for (i = 0; i < people.length; i++) {
+            if (people[i] == 'Phil' || people[i] == 'Lola') {
+                refused.textContent += `${people[i]}, `;
+
+            } else { admitted.textContent += `${people[i]}, `; }
+        }
+
+        // cutting the last 2 elements on the string to put a dot.
+        refused.textContent = refused.textContent.slice(0, refused.textContent.length - 2) + '.';
+        admitted.textContent = admitted.textContent.slice(0, admitted.textContent.length - 2) + '.';
+
+
+// refused.textContent += ;
+// admitted.textContent += ;
+
+
+    </script>
+</body>
+
+</html>
