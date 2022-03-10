@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Loops: Task 3</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+      
+      /*
+      You need to use a loop to go through the numbers 2 to 500 backwards 
+      (1 is not counted as a prime number), and run the provided isPrime() function on them. 
+      For each number that isn't a prime number, continue on to the next loop iteration.
+      For each one that is a prime number, add it to the paragraph's textContent along
+      with some kind of separator.
+
+      You should use a type of loop that you've not used in the previous two tasks.
+      */
+
+    let i = 500;
+    const para = document.createElement('p');
+
+    function isPrime(num) {
+      for(let i = 2; i < num; i++) {
+        if(num % i === 0) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+
+    // Add your code here
+    while(i>1){
+        if(isPrime(i) == true){
+            para.textContent += `${i}, `;
+        }
+        i--;
+    }
+    para.textContent = para.textContent.slice(0, para.textContent.length - 2) + '.';
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+    section.appendChild(para);
+  </script>
+
+</html>
