@@ -18,6 +18,48 @@ function createPara(content, style){
     return para;
 }
 
+function createDiv(style){
+    const div = document.createElement('div');
+    div.style.cssText = style;
+    return div;
+}
+
+function createH1(content){
+    const tH1 = document.createElement('h1');
+    tH1.textContent = content;
+    return tH1;
+}
+
+function createH3(content, style){
+    const tH3 = document.createElement('h1');
+    tH3.textContent = content;
+    tH3.style.cssText = style;
+    return tH3;
+}
+
+function creatingContent(){
+    const body = document.querySelector('body');
+    
+    body.appendChild(createPara("Hey, I'm red!", 'color:red'));
+    body.appendChild(createH3("I'm a blue H3", 'color:blue;'));
+    body.appendChild(createDiv('background:pink; border: 1px solid black;'));
+    
+    const theDiv = document.querySelector('div');
+    theDiv.appendChild(createH1("I'm in div!"));
+    theDiv.appendChild(createPara("MEE TOO!"));
+}
+
+window.onload = creatingContent;
+
+/* 1st solution
+
+function createPara(content, style){
+    const para = document.createElement('p');
+    para.style.cssText = style;
+    para.textContent = content;
+    return para;
+}
+
 function creatingContent(){
     const body = document.querySelector('body');
     const div = document.createElement('div')
@@ -37,5 +79,4 @@ function creatingContent(){
     div.appendChild(createPara("MEE TOO!"));
     body.appendChild(div);
 }
-
-window.onload = creatingContent;
+ */
