@@ -19,7 +19,7 @@ function createPara(content, style){
 };
 
 function createH3(content, style){
-    const tH3 = document.createElement('h1');
+    const tH3 = document.createElement('h3');
     tH3.textContent = content;
     tH3.style.cssText = style;
     return tH3;
