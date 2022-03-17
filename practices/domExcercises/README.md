@@ -13,3 +13,5 @@ Add the following elements to the container using ONLY JavaScript
   3. Hint for this one: after creating the <div> with createElement, 
      append the <h1> and <p> to it before adding it to the container.
  ```
+
+ And others DOM excercises folders
