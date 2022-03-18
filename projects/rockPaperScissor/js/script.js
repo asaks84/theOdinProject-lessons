@@ -1,6 +1,9 @@
 let pcPoints = 0;
 let playerPoints = 0;
+let roundResult = '';
 let roundCounter = 1;
+
+const buttons = document.querySelectorAll('button');
 
 function computerPlay() {
     const randomNum = Math.floor(Math.random() * 3);
@@ -11,51 +14,48 @@ function computerPlay() {
     } else if (randomNum == 2) {
         pcSelect = 'Paper';
     } else pcSelect = 'Scissor';
-    pcSelect = pcSelect.toUpperCase();
-    return pcSelect;
+    return pcSelect.toUpperCase();
 }
-
-function playerSelection() {
-    let userSelect = prompt('Make your move (rock, paper, scissor)').toUpperCase();
-
-    while (userSelect != 'ROCK' && userSelect != 'PAPER' && userSelect != 'SCISSOR') {
-        userSelect = prompt('Make your move (rock, paper, scissor).   ~type it right~').toUpperCase();
+function isTheWinner(){
+    if(pcPoints > playerPoints) {
+        console.error('You lost the game!');
+    } else if(pcPoints < playerPoints) {
+        console.warn('You won the game!');
     }
-    return userSelect;
 }
-
-function playRound() {
+function gameOver(){
+    if(pcPoints == 3 || playerPoints == 3){
+        console.error('GAME IS FUCKIN OVER!');
+        buttons.forEach(button => button.setAttribute("disabled", "true"));
+        isTheWinner();
+    }
+};
+function playRound(playerSelection) {
     const pcMove = computerPlay();
-    const playerMove = playerSelection();
+    const playerMove = playerSelection.target.value.toUpperCase();
 
     console.warn(`Round: ${roundCounter}`)
     // creating the conditions
     if (pcMove == playerMove) {
-        console.log("It's a Tie!")
+        roundResult ="It's a Tie!";
     } else if (
         (pcMove == 'ROCK' && playerMove == 'SCISSOR') ||
         (pcMove == 'PAPER' && playerMove == 'ROCK') ||
         (pcMove == 'SCISSOR' && playerMove == 'PAPER')) {
             ++pcPoints;
-            console.log('You Lose!');
+            roundResult ="You Lose!";
     } else {
         ++playerPoints;
-        console.log('You Win!');
-    }
+        roundResult ="You Win!";
+    } console.log(roundResult);
 
     console.log(`PC: ${pcMove}`);
     console.log(`YOU: ${playerMove}`);
     console.log(`POINTS:\nPC: ${pcPoints}\nUSER: ${playerPoints}`);
+    ++roundCounter;
+    gameOver();
 }
-function game() {
-    for(i=0;i<5;i++){
-        playRound();
-        ++roundCounter;
-    }
-    if(pcPoints > playerPoints) {
-        console.error('You lost the game!')
-    } else if(pcPoints < playerPoints) {
-        console.error('You won the game!')
-    } else { console.error('No winner for now!') }
-}
-game();
+
+// UI
+
+buttons.forEach(button => button.addEventListener('click', playRound));
