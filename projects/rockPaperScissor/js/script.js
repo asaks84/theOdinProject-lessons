@@ -5,6 +5,20 @@ let roundCounter = 1;
 
 const buttons = document.querySelectorAll('button');
 
+function isTheWinner(){
+    if(pcPoints > playerPoints) {
+        console.error('You lost the game!');
+    } else if(pcPoints < playerPoints) {
+        console.warn('You won the game!');
+    };
+};
+function gameOver(){
+    if(pcPoints == 3 || playerPoints == 3){
+        console.error('THE GAME IS FUCKIN OVER!');
+        buttons.forEach(button => button.setAttribute("disabled", "true"));
+        isTheWinner();
+    };
+};
 function computerPlay() {
     const randomNum = Math.floor(Math.random() * 3);
     let pcSelect;
@@ -15,20 +29,6 @@ function computerPlay() {
         pcSelect = 'Paper';
     } else pcSelect = 'Scissor';
     return pcSelect.toUpperCase();
-}
-function isTheWinner(){
-    if(pcPoints > playerPoints) {
-        console.error('You lost the game!');
-    } else if(pcPoints < playerPoints) {
-        console.warn('You won the game!');
-    }
-}
-function gameOver(){
-    if(pcPoints == 3 || playerPoints == 3){
-        console.error('GAME IS FUCKIN OVER!');
-        buttons.forEach(button => button.setAttribute("disabled", "true"));
-        isTheWinner();
-    }
 };
 function playRound(playerSelection) {
     const pcMove = computerPlay();
@@ -54,7 +54,7 @@ function playRound(playerSelection) {
     console.log(`POINTS:\nPC: ${pcPoints}\nUSER: ${playerPoints}`);
     ++roundCounter;
     gameOver();
-}
+};
 
 // UI
 
