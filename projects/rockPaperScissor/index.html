@@ -6,20 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jo Ken Po</title>
+
+    <link rel="stylesheet" href="style.css">
     <script src="./js/script.js" type="text/javascript" defer></script>
 </head>
 
 <body>
-    <h1>Rock - Paper - Scissor</h1>
-    <pre>It's a best of 5 rounds</pre>
-    <p>
-        Focusing just on the game.<br>
-        Layout see in the future.<br><br>
-        <kbd>open the console to play</kbd>
-    </p>
-    <button value="Rock">Rock</button>
-    <button value="Paper">Paper</button>
-    <button value="Scissor">Scissor</button>
+    <div id="container">
+        <div>
+            <h1>Jo Ken Po</h1>
+            <pre>A rock/paper/scissor game.<br>open console to play - UI not ready.<br><br><br><br>First to win 5 rounds is the winner.<br></pre>
+            <button class="choiceBtn" data-key="65" value="Rock">rock</button>
+            <button class="choiceBtn" data-key="83" value="Paper">paper</button>
+            <button class="choiceBtn" data-key="68" value="Scissor">scissor</button>
+        </div>
+        <div class="controls">
+            <h3>.key controls</h3>
+            <div class="keybind">
+                <ul>
+                    <li class="controls">
+                        <kbd>A: rock</kbd>
+                    </li>
+                    <li class="controls"><kbd>S: paper</kbd></li>
+                    <li class="controls"><kbd>D: scissor</kbd></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

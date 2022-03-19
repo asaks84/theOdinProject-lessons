@@ -172,5 +172,5 @@ main h2 {
 .signup button{
     border: white solid 2px;
     margin: 50px;
-    margin-left: auto; /* positioning elements on flexbox on the right /*
+    margin-left: auto; /* positioning elements on flexbox on the right */
 }

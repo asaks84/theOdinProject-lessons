@@ -65,6 +65,7 @@
         }
         function playAudio(e) {
             const toPlay = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            console.log(toPlay);
             const divChange = document.querySelector(`div[data-key="${e.keyCode}"]`);
             if (!toPlay) { return };
 

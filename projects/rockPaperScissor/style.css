@@ -1,0 +1,64 @@
+html, body, .controls {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+html, body {
+    background-color: black;
+    color: lightgray;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    height: 100%;
+}
+
+div#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.controls h3 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+div.controls {
+    position: fixed;
+    bottom: 10px;
+}
+
+.keybind ul {
+    padding-left: 50px;
+}
+
+button {
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:13px;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+button:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+li.controls {
+    list-style: none;
+    text-align: left;
+}
