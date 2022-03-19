@@ -67,25 +67,33 @@ function controls(e) {
 }
 
 // UI
+
+function fadein(e) {
+    e.classList.remove('displayNone');
+    setTimeout(function () {
+        e.classList.remove('hidden');
+        e.classList.add('visible');
+    }, 500);
+}
+function fadeOut(disable) {
+    disable.classList.remove('visible');
+    disable.classList.add('hidden');
+    setTimeout(function () {
+        disable.classList.add('displayNone');
+    }, 1000);
+}
+
 function startGame() {
     const gameStart = Array.from(document.querySelectorAll('.opening'));
     const divContainer = document.querySelector('div#container');
-    const gameOpening = Array.from(document.querySelectorAll('.displayNone'));
+    const gameOpening = Array.from(document.querySelectorAll('.hidden'));
 
     gameStart.forEach(disable => {
-        disable.classList.add('hidden');
-        divContainer.classList.add('bgOut');
-        setTimeout(function () {
-            disable.classList.add('displayNone');
-        }, 350);
+        fadeOut(disable);
     });
 
     gameOpening.forEach(enable => {
-        enable.classList.remove('displayNone');
-        setTimeout(function () {
-            enable.classList.remove('hidden');
-            enable.classList.add('visible');
-        }, 500);
+        fadein(enable);
     });
 
 }

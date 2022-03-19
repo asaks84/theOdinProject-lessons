@@ -52,7 +52,6 @@ div#container {
 .theGame {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s .3s, opacity .3s, display .3s linear;
 }
 .displayNone { display: none; }
 
@@ -65,7 +64,7 @@ div#container {
 .hidden {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s .3s, opacity .3s, display .3s linear;
+    transition: visibility 0s .5s, opacity .5s, display .5s linear;
   }
 
 h1.title {
