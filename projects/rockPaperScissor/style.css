@@ -43,7 +43,7 @@ button {
 	border-radius:5px;
 	border:1px solid #566963;
 	display:inline-block;
-	cursor:pointer;
+	
 	color:#ffffff;
 	font-size:13px;
 	padding:11px 23px;
@@ -57,6 +57,10 @@ button:hover {
 button:active {
 	position:relative;
 	top:1px;
+}
+button.disabled { 
+    pointer-events: none;
+    opacity: 0.3;
 }
 li.controls {
     list-style: none;

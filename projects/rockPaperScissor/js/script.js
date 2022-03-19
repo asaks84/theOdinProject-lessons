@@ -15,7 +15,10 @@ function isTheWinner(){
 function gameOver(){
     if(pcPoints == 5 || playerPoints == 5){
         console.error('THE GAME IS FUCKIN OVER!');
-        buttons.forEach(button => button.setAttribute("disabled", "true"));
+        buttons.forEach(button => { 
+            button.setAttribute("disabled", "true");
+            button.classList.add('disabled')
+        });
         isTheWinner();
     };
 };
