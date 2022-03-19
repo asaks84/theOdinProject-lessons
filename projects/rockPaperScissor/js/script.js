@@ -4,7 +4,7 @@ let roundResult = '';
 let roundCounter = 1;
 
 const buttons = document.querySelectorAll('.choiceBtn');
-const butonStart = document.querySelector('button.play');
+const butonStart = document.querySelector('button.startPlay');
 
 function isTheWinner() {
     if (pcPoints > playerPoints) {
@@ -92,5 +92,5 @@ function startGame() {
 buttons.forEach(button => button.addEventListener('click', playRound));
 
 // start the game
-addEventListener('click', startGame);
+butonStart.addEventListener('click', startGame);
 window.addEventListener('keydown', controls);
