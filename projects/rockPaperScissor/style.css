@@ -21,7 +21,13 @@ div#container {
     align-items: center;
     height: 100%;
 }
-
+p {
+    line-height: 125%;
+}
+.monospace {
+    font-family: monospace;
+    font-size: small;
+}
 .controls h3 {
     margin-top: 50px;
     margin-bottom: 10px;
