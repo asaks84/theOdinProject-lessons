@@ -35,13 +35,9 @@ div#container {
     background-size: cover;
     visibility: visible;
 }
-.bgOut{ 
-    visibility: hidden;
-    transition: visibility 0s .5s;
-}
 
 /* openming screen */
-.opening {
+div.opening {
     font-family: Bangers, cursive;
     font-size: 40px;
     color: white;

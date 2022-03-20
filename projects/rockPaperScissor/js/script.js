@@ -6,6 +6,8 @@ let roundCounter = 1;
 const buttons = document.querySelectorAll('.choiceBtn');
 const butonStart = document.querySelector('button.startPlay');
 
+
+// game functions
 function isTheWinner() {
     if (pcPoints > playerPoints) {
         console.log('%c SORRY, YOU LOST!', 'color:red;');
@@ -64,41 +66,45 @@ function controls(e) {
     const control = document.querySelector(`button[data-key="${e.keyCode}"]`);
     if (!control) return;
     control.click();
-}
+};
 
 // UI
 
-function fadein(e) {
-    e.classList.remove('displayNone');
+function fadein(enable, time) {
+    if (!time) time = 350;
     setTimeout(function () {
-        e.classList.remove('hidden');
-        e.classList.add('visible');
-    }, 500);
-}
-function fadeOut(disable) {
+        enable.classList.remove('displayNone');
+    }, time);
+    setTimeout(function () {
+        enable.classList.remove('hidden');
+        enable.classList.add('visible');
+    }, time + 50);
+};
+function fadeOut(disable, time) {
+    if (!time) time = 350;
     disable.classList.remove('visible');
     disable.classList.add('hidden');
     setTimeout(function () {
         disable.classList.add('displayNone');
-    }, 1000);
-}
+    }, time);
+};
 
-function startGame() {
-    const gameStart = Array.from(document.querySelectorAll('.opening'));
-    const divContainer = document.querySelector('div#container');
-    const gameOpening = Array.from(document.querySelectorAll('.hidden'));
+function startPlaying() {
+    const openingScreenClose = Array.from(document.querySelectorAll('.opening'));
+    const gameStart = Array.from(document.querySelectorAll('.hidden'));
 
-    gameStart.forEach(disable => {
+    openingScreenClose.forEach(disable => {
         fadeOut(disable);
     });
-
-    gameOpening.forEach(enable => {
+    gameStart.forEach(enable => {
         fadein(enable);
-    });
+    })
 
-}
+};
+
+// playing the game
 buttons.forEach(button => button.addEventListener('click', playRound));
+window.addEventListener('keydown', controls);
 
 // start the game
-butonStart.addEventListener('click', startGame);
-window.addEventListener('keydown', controls);
+butonStart.addEventListener('click', startPlaying);
