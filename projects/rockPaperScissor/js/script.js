@@ -10,7 +10,7 @@ const butonStart = document.querySelector('button.startPlay');
 // game functions
 function isTheWinner() {
     if (pcPoints > playerPoints) {
-        console.log('%c SORRY, YOU LOST!', 'color:red;');
+        console.log('%c HAHA, LOOSER!', 'color:red;');
     } else if (pcPoints < playerPoints) {
         console.log('%c NICE! YOU WON THE GAME!', 'color: green;');
     };
@@ -70,36 +70,32 @@ function controls(e) {
 
 // UI
 
-function fadein(enable, time) {
-    if (!time) time = 350;
-    setTimeout(function () {
-        enable.classList.remove('displayNone');
-    }, time);
-    setTimeout(function () {
-        enable.classList.remove('hidden');
-        enable.classList.add('visible');
-    }, time + 50);
-};
-function fadeOut(disable, time) {
-    if (!time) time = 350;
+function fadeOut(disable, transitionTime) {
+    if (transitionTime) disable.setAttribute('style', transitionTime);
     disable.classList.remove('visible');
     disable.classList.add('hidden');
+    disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
+};
+function fadeIn(enable, timer, transitionTime) {
+    if (!timer) timer = 550;
+    if (enable.classList.contains('displayNone')) {
+        enable.classList.remove('displayNone');
+    }
     setTimeout(function () {
-        disable.classList.add('displayNone');
-    }, time);
+        enable.classList.remove('hidden');
+        enable.setAttribute('style', transitionTime);
+        enable.classList.add('visible');
+    }, timer);
 };
 
 function startPlaying() {
-    const openingScreenClose = Array.from(document.querySelectorAll('.opening'));
-    const gameStart = Array.from(document.querySelectorAll('.hidden'));
+    const toCloseOpeningScreen = document.querySelector('#openingScreen');
+    const gameStart = document.querySelector('#theGame');
+    const fadeInDuration = 'transition-duration: .7s';
+    const fadeStart = 600;
 
-    openingScreenClose.forEach(disable => {
-        fadeOut(disable);
-    });
-    gameStart.forEach(enable => {
-        fadein(enable);
-    })
-
+    fadeOut(toCloseOpeningScreen);
+    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameStart, fadeStart, fadeInDuration));
 };
 
 // playing the game

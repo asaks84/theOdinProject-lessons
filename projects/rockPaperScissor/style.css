@@ -10,6 +10,8 @@ html, body, .controls {
     vertical-align: baseline;
 }
 
+/* General */
+
 html, body {
     background-color: black;
     color: lightgray;
@@ -17,6 +19,7 @@ html, body {
     text-align: center;
     height: 100%;
 }
+
 .flex {
     display: flex;
     flex-direction: column;
@@ -24,44 +27,42 @@ html, body {
     align-items: center;
     height: 100%;
 }
+
 div#container {
     height: 100%;
     min-height: 100%;
 }
-.actionBg{
-    background-image: url('./imgs/backgroundFight.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    visibility: visible;
+
+/* Effects */
+
+.displayNone {
+    display: none;
 }
 
-/* openming screen */
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .7s ease-in;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 600ms ease-in-out;
+}
+
+/* opening screen */
+
 div.opening {
     font-family: Bangers, cursive;
     font-size: 40px;
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     height: 100%;
+    background: url('./imgs/backgroundFight.jpg') center center no-repeat;
+    background-size: cover;
 
 }
-.theGame {
-    visibility: hidden;
-    opacity: 0;
-}
-.displayNone { display: none; }
-
-.visible {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 2s linear;
-}
-
-.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s .5s, opacity .5s, display .5s linear;
-  }
 
 h1.title {
     font-family: Bangers, cursive;
@@ -104,6 +105,7 @@ button.startPlay:active {
 }
 
 /* game screen */
+
 p {
     line-height: 125%;
 }

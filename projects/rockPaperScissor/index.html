@@ -14,9 +14,9 @@
 <body>
     <div id="container">
         <!-- opening screen -->
-        <div class="opening startPlay flex actionBg">
+        <div id="openingScreen" class="opening flex">
             <div>
-                <h1 class="title startPlay">are your ready...</h1>
+                <h1 class="title">are your ready...</h1>
                 <p>
                     the most impressive<br>
                     battle of the decade!!!
@@ -27,8 +27,8 @@
         </div>
 
         <!-- Gameplay -->
-        <div class="flex theGame displayNone hidden">
-            <div id="theGame" class="hidden">
+        <div id="theGame" class="flex displayNone hidden">
+            <div>
                 <h1>Jo Ken Po</h1>
                 <p class="monospace">
                     A rock/paper/scissor game.<br><br>
@@ -39,14 +39,13 @@
                 <button class="choiceBtn" data-key="83" value="Paper">paper</button>
                 <button class="choiceBtn" data-key="68" value="Scissor">scissor</button>
             </div>
-            <div class="controls displayNone hidden">
+            <div class="controls">
                 <h3>.key controls</h3>
                 <div class="keybind">
                     <ul>
                         <li class="controls"><span class="monospace"><kbd>A</kbd>: rock</span></li>
                         <li class="controls"><span class="monospace"><kbd>S</kbd>: paper</span></li>
                         <li class="controls"><span class="monospace"><kbd>D</kbd>: scissor</span></li>
-
                     </ul>
                 </div>
             </div>
