@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+
+/* reset */
 html, body, .controls {
     margin: 0;
     padding: 0;
@@ -5,6 +9,8 @@ html, body, .controls {
     font: inherit;
     vertical-align: baseline;
 }
+
+/* General */
 
 html, body {
     background-color: black;
@@ -14,20 +20,101 @@ html, body {
     height: 100%;
 }
 
-div#container {
+.flex {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
+
+div#container {
+    height: 100%;
+    min-height: 100%;
+}
+
+/* Effects */
+
+.displayNone {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .7s ease-in;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 600ms ease-in-out;
+}
+
+/* opening screen */
+
+div.opening {
+    font-family: Bangers, cursive;
+    font-size: 40px;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    height: 100%;
+    background: url('./imgs/backgroundFight.jpg') center center no-repeat;
+    background-size: cover;
+
+}
+
+h1.title {
+    font-family: Bangers, cursive;
+    text-align: center;
+    font-size: 80px;
+    color: rgb(255, 255, 255);
+    text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
+}
+
+.opening h1 {
+    margin: 7% 0;
+}
+
+button.startPlay {
+    box-shadow: 0px 0px 10px -1px #2c3233;
+    background: linear-gradient(to bottom, #f09800 5%, #c7280c 100%);
+    background-color: #f09800;
+    border-radius: 3px;
+    border: 2px solid #000000;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Bangers, cursive;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px 38px;
+    text-decoration: none;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    margin: 5%;
+}
+
+button.startPlay:hover {
+    background: linear-gradient(to bottom, #c7280c 5%, #f09800 100%);
+    background-color: #c7280c;
+}
+
+button.startPlay:active {
+    position: relative;
+    top: 1px;
+}
+
+/* game screen */
+
 p {
     line-height: 125%;
 }
+
 .monospace {
     font-family: monospace;
     font-size: small;
 }
+
 .controls h3 {
     margin-top: 50px;
     margin-bottom: 10px;
@@ -43,26 +130,28 @@ div.controls {
 }
 
 button {
-	box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-	background-color:#768d87;
-	border-radius:5px;
-	border:1px solid #566963;
-	display:inline-block;
-	
-	color:#ffffff;
-	font-size:13px;
-	padding:11px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #2b665e;
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color: #768d87;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 11px 23px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2b665e;
 }
+
 button:hover {
-	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-	background-color:#6c7c7c;
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
 }
+
 button:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 button.disabled { 
     pointer-events: none;
