@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
 
 /* reset */
+
 html, body, .controls {
     margin: 0;
     padding: 0;
@@ -23,8 +24,6 @@ html, body {
 .flex {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100%;
 }
 
@@ -61,6 +60,8 @@ div.opening {
     height: 100%;
     background: url('./imgs/backgroundFight.jpg') center center no-repeat;
     background-size: cover;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -106,6 +107,20 @@ button.startPlay:active {
 
 /* game screen */
 
+.bgGame {
+    background: url('./imgs/sky.png') center top repeat-x;
+    background-color: #3C72FC;
+}
+
+#theGame{
+    color: #000000;
+    justify-content: flex-end;
+    align-items: center;
+}
+#theGame h1 {
+    margin-top: 0;
+}
+
 p {
     line-height: 125%;
 }
@@ -115,14 +130,12 @@ p {
     font-size: small;
 }
 
+div.controls {
+    bottom: 50px;
+}
 .controls h3 {
     margin-top: 50px;
     margin-bottom: 10px;
-}
-
-div.controls {
-    position: fixed;
-    bottom: 10px;
 }
 
 .keybind ul {
@@ -153,10 +166,12 @@ button:active {
     position: relative;
     top: 1px;
 }
-button.disabled { 
+
+button.disabled {
     pointer-events: none;
     opacity: 0.3;
 }
+
 li.controls {
     list-style: none;
     text-align: left;

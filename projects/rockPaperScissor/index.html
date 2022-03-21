@@ -12,9 +12,11 @@
 </head>
 
 <body>
-    <div id="container">
+    <div id="container" class="bgGame">
+
         <!-- opening screen -->
-        <div id="openingScreen" class="opening flex">
+
+        <!-- <div id="openingScreen" class=" opening flex">
             <div>
                 <h1 class="title">are your ready...</h1>
                 <p>
@@ -24,17 +26,19 @@
                 <h1 class="title">...to fight?!</h1>
             </div>
             <button class="opening startPlay">Let's Play!</button>
-        </div>
+        </div> -->
 
         <!-- Gameplay -->
-        <div id="theGame" class="flex displayNone hidden">
-            <div>
-                <h1>Jo Ken Po</h1>
-                <p class="monospace">
-                    A rock/paper/scissor game.<br><br>
-                    open console to play - UI not ready.<br><br><br><br>
-                    First to win 5 rounds is the winner.
-                </p>
+
+        <div id="theGame" class="flex">
+            <div></div>
+            <h1>Jo Ken Po</h1>
+            <p class="monospace">
+                A rock/paper/scissor game.<br><br>
+                open console to play - UI not ready.<br><br><br><br>
+                First to win 5 rounds is the winner.
+            </p>
+            <div class="buttons">
                 <button class="choiceBtn" data-key="65" value="Rock">rock</button>
                 <button class="choiceBtn" data-key="83" value="Paper">paper</button>
                 <button class="choiceBtn" data-key="68" value="Scissor">scissor</button>
@@ -50,6 +54,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
