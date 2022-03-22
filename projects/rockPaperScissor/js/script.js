@@ -91,7 +91,7 @@ function controls(e) {
 // UI
 
 function loadSlider() {
-    const timer = 200;
+    const timer = 2000;
     buttons.forEach(button => {
         button.classList.add('disabled')
     });
