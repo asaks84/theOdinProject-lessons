@@ -302,3 +302,18 @@ li.controls {
         margin-top: 20px;
     }
 }
+
+@media screen and (max-width: 450px) {
+    div.fixbottom {
+        width: 310px;
+    }
+    .choiceBtn {
+        margin-bottom: 10px;
+    }
+    #playerChoices {
+        flex-direction: column;
+    }
+    #theGame h1 {
+        margin-top: 20px;
+    }
+}
