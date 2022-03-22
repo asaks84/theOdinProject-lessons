@@ -154,6 +154,7 @@ button.startPlay:active {
     width: inherit;
     gap: 10px;
 }
+
 .playerPoint,
 .machinePoint {
     background-color: #f09800;
@@ -242,7 +243,9 @@ p {
 }
 
 div.controls {
-    bottom: 50px;
+   position: absolute;
+   top: -40px;
+   right: 40px;
 }
 
 .controls h3 {
@@ -288,31 +291,60 @@ li.controls {
     text-align: left;
 }
 
+/* PC THINKING ANIMATION */
+
+.slider {
+    animation: slide infinite;
+    /* animation-delay: .05s; */
+    animation-duration: .6s;
+    background-size: cover;
+    background-image: url('./imgs/rockR.png');
+    width: 70px;
+    height: 70px;
+}
+
+@keyframes slide {
+    33% {
+        background-image: url('./imgs/paperR.png');
+    }
+
+    66% {
+        background-image: url('./imgs/scissorR.png');
+    }
+}
+
 @media screen and (max-width: 800px) {
     div.fixbottom {
         width: 580px;
     }
+
     .choiceBtn {
         margin-bottom: 10px;
     }
+
     #playerChoices {
         flex-direction: column;
     }
+
     #theGame h1 {
         margin-top: 20px;
     }
+    .controls { display: none;}
 }
 
 @media screen and (max-width: 450px) {
     div.fixbottom {
         width: 310px;
     }
+
     .choiceBtn {
         margin-bottom: 10px;
     }
+
     #playerChoices {
         flex-direction: column;
     }
+
     #theGame h1 {
         margin-top: 20px;
     }

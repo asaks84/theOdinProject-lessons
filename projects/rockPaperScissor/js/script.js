@@ -7,9 +7,15 @@ const buttons = Array.from(document.querySelectorAll('.choiceBtn'));
 const butonStart = document.querySelector('button.startPlay');
 const machineScore = Array.from(document.querySelectorAll('.machinePoint'));
 const playerScore = Array.from(document.querySelectorAll('.playerPoint'));
+const machineChoice = document.querySelector('#machineChoice');
+const slider = document.querySelector('.slider');
 
 // game functions
 function isTheWinner() {
+    console.error('THE GAME IS FUCKIN OVER!');
+    buttons.forEach(button => {
+        button.classList.add('disabled')
+    });
     if (pcPoints > playerPoints) {
         console.log('%c HAHA, LOOSER!', 'color:red;');
     } else if (pcPoints < playerPoints) {
@@ -17,14 +23,7 @@ function isTheWinner() {
     };
 };
 function gameOver() {
-    if (pcPoints == 5 || playerPoints == 5) {
-        console.error('THE GAME IS FUCKIN OVER!');
-        buttons.forEach(button => {
-            button.setAttribute("disabled", "true");
-            button.classList.add('disabled')
-        });
-        isTheWinner();
-    };
+    return pcPoints == 5 || playerPoints == 5
 };
 function capitalyze(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -69,36 +68,52 @@ function playRound(playerSelection) {
         addScore(playerScore, playerPoints);
     };
 
-    //printing round results
+    // printing round results on console
     console.warn(`Round: %c${roundCounter}`, 'color: red;');
     console.log(`${capitalyze('You')}: ${capitalyze(playerMove)}`);
     console.log(`Pc: ${capitalyze(pcMove)}`);
     console.log(`Points:\nPc: ${pcPoints}\nYou: ${playerPoints}`);
     console.log(`%c${roundResult.toUpperCase()}`, 'color: white;');
     ++roundCounter;
-    gameOver();
+    if (gameOver()) { 
+        isTheWinner()
+        return 
+    } loadSlider()
 };
+
 function controls(e) {
     const control = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (pcPoints == 5 || playerPoints == 5) return
+    if (gameOver()) return
     if (!control) return;
     control.click();
 };
 
 // UI
+
+function loadSlider() {
+    const timer = 200;
+    buttons.forEach(button => {
+        button.classList.add('disabled')
+    });
+    setTimeout(function () {
+        machineChoice.removeChild(machineChoice.firstChild);
+        machineChoice.appendChild(slider);
+        buttons.forEach(button => {
+            button.classList.remove('disabled')
+        });
+    }, timer);
+};
+
 function showPcSelection(pcResult) {
-    const machineChoice = document.querySelector('#machineChoice');
-    const imgArray= [ './imgs/rockR.png' , './imgs/paperR.png' , './imgs/scissorR.png'];
+    const imgArray = ['./imgs/rockR.png', './imgs/paperR.png', './imgs/scissorR.png'];
     const img = document.createElement('img');
 
     while (machineChoice.firstChild) {
         machineChoice.removeChild(machineChoice.firstChild);
-      }
+    };
 
-     img.src = imgArray[pcResult];
+    img.src = imgArray[pcResult];
     img.width = '70'
-
-
     machineChoice.appendChild(img);
 }
 
@@ -141,4 +156,4 @@ buttons.forEach(button => button.addEventListener('click', playRound));
 window.addEventListener('keydown', controls);
 
 // start the game
- butonStart.addEventListener('click', startPlaying);
+butonStart.addEventListener('click', startPlaying);
