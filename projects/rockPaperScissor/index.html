@@ -12,11 +12,11 @@
 </head>
 
 <body>
-    <div id="container" class="bgGame">
+    <div id="container" class="">
 
-        <!-- opening screen -->
+        <!-- Opening -->
 
-        <!-- <div id="openingScreen" class=" opening flex">
+        <div id="openingScreen" class=" opening flex">
             <div>
                 <h1 class="title">are your ready...</h1>
                 <p>
@@ -26,35 +26,60 @@
                 <h1 class="title">...to fight?!</h1>
             </div>
             <button class="opening startPlay">Let's Play!</button>
-        </div> -->
+        </div>
 
         <!-- Gameplay -->
 
-        <div id="theGame" class="flex">
-            <div></div>
-            <h1>Jo Ken Po</h1>
-            <p class="monospace">
-                A rock/paper/scissor game.<br><br>
-                open console to play - UI not ready.<br><br><br><br>
-                First to win 5 rounds is the winner.
-            </p>
-            <div class="buttons">
-                <button class="choiceBtn" data-key="65" value="Rock">rock</button>
-                <button class="choiceBtn" data-key="83" value="Paper">paper</button>
-                <button class="choiceBtn" data-key="68" value="Scissor">scissor</button>
-            </div>
-            <div class="controls">
-                <h3>.key controls</h3>
-                <div class="keybind">
-                    <ul>
-                        <li class="controls"><span class="monospace"><kbd>A</kbd>: rock</span></li>
-                        <li class="controls"><span class="monospace"><kbd>S</kbd>: paper</span></li>
-                        <li class="controls"><span class="monospace"><kbd>D</kbd>: scissor</span></li>
-                    </ul>
+        <!--  -->
+        <div id="theGame" class="displayNone hidden">
+            <div>
+                <h1>Jo Ken Po</h1>
+                <div id="score">
+                    <div id="playerPoints" class="flex">
+                        <div class="playerPoint"></div>
+                        <div class="playerPoint"></div>
+                        <div class="playerPoint"></div>
+                        <div class="playerPoint"></div>
+                        <div class="playerPoint"></div>
+                    </div>
+                    <h3>SCORE</h3>
+                    <div id="machinePoints" class="flex">
+                        <div class="machinePoint"></div>
+                        <div class="machinePoint"></div>
+                        <div class="machinePoint"></div>
+                        <div class="machinePoint"></div>
+                        <div class="machinePoint"></div>
+                    </div>
                 </div>
             </div>
+            <div class="fixbottom">
+                <div class="flex">
+
+                    <div id="player">
+                        <div id="playerChoices">
+                            <div class="choiceBtn" data-key="65" data-value="Rock">
+                                <img src="./imgs/rockL.png" alt="" width="50" class="disabled">
+                            </div>
+                            <div class="choiceBtn" data-key="83" data-value="Paper">
+                                <img src="./imgs/paperL.png" alt="" width="50" class="disabled">
+                            </div>
+                            <div class="choiceBtn" data-key="68" data-value="Scissor">
+                                <img src="./imgs/scissorL.png" alt="" width="50" class="disabled">
+                            </div>
+                        </div>
+                        <img src="./imgs/person.png" alt="Player" width="50">
+                    </div>
+
+                    <div id="machine">
+                        <div id="machineChoice">
+                            <h1>?</h1>
+                        </div><br>
+                        <img src="./imgs/machine.png" alt="Machine" width="180">
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
     </div>
 </body>
 
