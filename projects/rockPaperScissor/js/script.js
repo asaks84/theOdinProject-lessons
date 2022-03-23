@@ -9,6 +9,7 @@ const machineScore = Array.from(document.querySelectorAll('.machinePoint'));
 const playerScore = Array.from(document.querySelectorAll('.playerPoint'));
 const machineChoice = document.querySelector('#machineChoice');
 const slider = document.querySelector('.slider');
+const restultTimer = 1500;
 
 // game functions
 function isTheWinner() {
@@ -67,6 +68,7 @@ function playRound(playerSelection) {
         roundResult = "You Win!";
         addScore(playerScore, playerPoints);
     };
+    showRoundResult(roundResult);
 
     // printing round results on console
     console.warn(`Round: %c${roundCounter}`, 'color: red;');
@@ -75,9 +77,9 @@ function playRound(playerSelection) {
     console.log(`Points:\nPc: ${pcPoints}\nYou: ${playerPoints}`);
     console.log(`%c${roundResult.toUpperCase()}`, 'color: white;');
     ++roundCounter;
-    if (gameOver()) { 
+    if (gameOver()) {
         isTheWinner()
-        return 
+        return
     } loadSlider()
 };
 
@@ -90,8 +92,54 @@ function controls(e) {
 
 // UI
 
+function fadeOut(disable, dontRemove, transitionTime) {
+    if (transitionTime) disable.style.transitionDuration = transitionTime;
+    
+    disable.classList.remove('visible');
+    disable.classList.add('hidden');
+   
+    if (dontRemove != true) {
+        disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
+    };
+};
+
+function fadeIn(enable, timer, transitionTime) {
+    if (!timer) timer = 0;
+    if (transitionTime) enable.style.transitionDuration  = transitionTime;
+
+    if (enable.classList.contains('displayNone')) {
+        enable.classList.remove('displayNone');
+    }
+    setTimeout(function () {
+        enable.classList.remove('hidden');
+        enable.classList.add('visible');
+    }, timer);
+};
+
+function showRoundResult(result) {
+    const divResult = document.querySelector('#roundResult');
+    const para = divResult.querySelector('p');
+
+    para.textContent = result;
+    para.classList.add('hidden');
+
+    if (result == "It's a Tie!") {
+        para.style.color = 'yellow';
+    } else if (result == "You Lose!") {
+        para.style.color = 'red';
+    } else para.style.color = 'green';
+
+    divResult.appendChild(para);
+
+    fadeIn(para);
+
+    setTimeout(() => {
+        fadeOut(para,true);
+    }, restultTimer);
+};
+
 function loadSlider() {
-    const timer = 2000;
+
     buttons.forEach(button => {
         button.classList.add('disabled')
     });
@@ -101,7 +149,7 @@ function loadSlider() {
         buttons.forEach(button => {
             button.classList.remove('disabled')
         });
-    }, timer);
+    }, restultTimer);
 };
 
 function showPcSelection(pcResult) {
@@ -121,34 +169,14 @@ function addScore(playerPoint, point) {
     playerPoint[point - 1].classList.add('winnerPoint');
 };
 
-function fadeOut(disable, transitionTime) {
-    if (transitionTime) disable.setAttribute('style', transitionTime);
-    disable.classList.remove('visible');
-    disable.classList.add('hidden');
-    disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
-};
-function fadeIn(enable, timer, transitionTime) {
-    if (!timer) timer = 550;
-    if (enable.classList.contains('displayNone')) {
-        enable.classList.remove('displayNone');
-    }
-    setTimeout(function () {
-        enable.classList.remove('hidden');
-        enable.setAttribute('style', transitionTime);
-        enable.classList.add('visible');
-    }, timer);
-};
-
 function startPlaying() {
-    const container = document.querySelector('div#container');
     const toCloseOpeningScreen = document.querySelector('#openingScreen');
     const gameStart = document.querySelector('#theGame');
-    const fadeInDuration = 'transition-duration: .7s';
     const fadeStart = 600;
 
-    container.classList.add('bgGame');
+
     fadeOut(toCloseOpeningScreen);
-    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameStart, fadeStart, fadeInDuration));
+    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameStart, fadeStart));
 };
 
 // playing the game
