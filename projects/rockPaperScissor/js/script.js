@@ -1,25 +1,30 @@
 let pcPoints = 0;
 let playerPoints = 0;
-let roundResult = '';
 let roundCounter = 1;
 
 const buttons = Array.from(document.querySelectorAll('.choiceBtn'));
 const butonStart = document.querySelector('button.startPlay');
+const butonRestart = document.querySelectorAll('button.restart');
+
 const machineScore = Array.from(document.querySelectorAll('.machinePoint'));
 const playerScore = Array.from(document.querySelectorAll('.playerPoint'));
+
 const machineChoice = document.querySelector('#machineChoice');
 const slider = document.querySelector('.slider');
-const restultTimer = 1500;
+
+const divEndGame = document.querySelector('#endGame');
+
+const restultTimer = 5;
 
 // game functions
 function isTheWinner() {
+    stopPlaying();
     console.error('THE GAME IS FUCKIN OVER!');
-    buttons.forEach(button => {
-        button.classList.add('disabled')
-    });
     if (pcPoints > playerPoints) {
+        showEndGame("lost");
         console.log('%c HAHA, LOOSER!', 'color:red;');
     } else if (pcPoints < playerPoints) {
+        showEndGame("won");
         console.log('%c NICE! YOU WON THE GAME!', 'color: green;');
     };
 };
@@ -28,7 +33,8 @@ function gameOver() {
 };
 function capitalyze(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
+};
+
 function computerPlay() {
     const randomNum = Math.floor(Math.random() * 3);
 
@@ -47,7 +53,9 @@ function computerPlay() {
         }
     };
 };
+
 function playRound(playerSelection) {
+    let roundResult = '';
     const pcMove = computerPlay();
     const playerMove = playerSelection.target.getAttribute('data-value').toUpperCase();
 
@@ -70,6 +78,11 @@ function playRound(playerSelection) {
     };
     showRoundResult(roundResult);
 
+    if (gameOver()) {
+        isTheWinner();
+        return
+    } gameContinue(); // continue playing
+
     // printing round results on console
     console.warn(`Round: %c${roundCounter}`, 'color: red;');
     console.log(`${capitalyze('You')}: ${capitalyze(playerMove)}`);
@@ -77,10 +90,6 @@ function playRound(playerSelection) {
     console.log(`Points:\nPc: ${pcPoints}\nYou: ${playerPoints}`);
     console.log(`%c${roundResult.toUpperCase()}`, 'color: white;');
     ++roundCounter;
-    if (gameOver()) {
-        isTheWinner()
-        return
-    } loadSlider()
 };
 
 function controls(e) {
@@ -90,27 +99,75 @@ function controls(e) {
     control.click();
 };
 
+
 // UI
+
+function gameRestart() {
+    const removeScorePoints = Array.from(document.querySelectorAll('.winnerPoint'));
+    const resultScore = divEndGame.querySelector('.visible')
+    console.log(resultScore);
+
+    // reset score
+    pcPoints = 0;
+    playerPoints = 0;
+    removeScorePoints.forEach(e => { e.classList.remove('winnerPoint') });
+    //console.clear();
+    
+    //reset rounds
+    roundCounter = 1;
+
+    gameContinue();
+
+    // close Game Result
+    fadeOut(resultScore);
+    fadeOut(divEndGame);
+};
+
+function showEndGame(result) {
+    const screenToShow = document.querySelector(`#${result}`);
+    const pointsResult = `<h3>Result:</h3> <h3>${playerPoints} x ${pcPoints}</h3>`;
+    const finalScore = screenToShow.querySelector('.finalScore');
+
+    finalScore.innerHTML = pointsResult;
+    fadeIn(divEndGame);
+    fadeIn(screenToShow);
+};
+
+function stopPlaying() {
+    buttons.forEach(button => {
+        button.classList.add('disabled')
+    });
+};
+
+function continuePlaying() {
+    buttons.forEach(button => {
+        button.classList.remove('disabled');
+    });
+};
+
 
 function fadeOut(disable, dontRemove, transitionTime) {
     if (transitionTime) disable.style.transitionDuration = transitionTime;
-    
+
     disable.classList.remove('visible');
     disable.classList.add('hidden');
-   
-    if (dontRemove != true) {
-        disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
-    };
+    disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
+
+    console.log(disable)
+    // if (dontRemove != true) {
+    //     disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
+    // };
+
 };
 
 function fadeIn(enable, timer, transitionTime) {
     if (!timer) timer = 0;
-    if (transitionTime) enable.style.transitionDuration  = transitionTime;
-
-    if (enable.classList.contains('displayNone')) {
-        enable.classList.remove('displayNone');
-    }
-    setTimeout(function () {
+    enable.classList.remove('displayNone');
+   // if (transitionTime) enable.style.transitionDuration = transitionTime;
+    // if (enable.classList.contains('displayNone')) {
+    //     enable.classList.remove('displayNone');
+    // };
+    setTimeout(() => {
         enable.classList.remove('hidden');
         enable.classList.add('visible');
     }, timer);
@@ -134,21 +191,17 @@ function showRoundResult(result) {
     fadeIn(para);
 
     setTimeout(() => {
-        fadeOut(para,true);
+        fadeOut(para, true);
     }, restultTimer);
 };
 
-function loadSlider() {
+function gameContinue() {
+    stopPlaying()
 
-    buttons.forEach(button => {
-        button.classList.add('disabled')
-    });
-    setTimeout(function () {
+    setTimeout(() => {
         machineChoice.removeChild(machineChoice.firstChild);
         machineChoice.appendChild(slider);
-        buttons.forEach(button => {
-            button.classList.remove('disabled')
-        });
+        continuePlaying();
     }, restultTimer);
 };
 
@@ -161,22 +214,22 @@ function showPcSelection(pcResult) {
     };
 
     img.src = imgArray[pcResult];
-    img.width = '70'
+    img.width = '70';
     machineChoice.appendChild(img);
-}
+};
 
 function addScore(playerPoint, point) {
     playerPoint[point - 1].classList.add('winnerPoint');
 };
 
 function startPlaying() {
+    const gameScreen = document.querySelector('#theGame');
     const toCloseOpeningScreen = document.querySelector('#openingScreen');
-    const gameStart = document.querySelector('#theGame');
     const fadeStart = 600;
 
-
     fadeOut(toCloseOpeningScreen);
-    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameStart, fadeStart));
+    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameScreen, fadeStart));
+
 };
 
 // playing the game
@@ -185,3 +238,6 @@ window.addEventListener('keydown', controls);
 
 // start the game
 butonStart.addEventListener('click', startPlaying);
+
+// reset game
+butonRestart.forEach(e => e.addEventListener('click', gameRestart));

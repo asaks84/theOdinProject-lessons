@@ -10,19 +10,20 @@ html, body, .controls {
     vertical-align: baseline;
 }
 
-/* General */
+/* GENERAL */
 
 html, body {
-    background-color: black;
+    background-color: rgb(75, 75, 75);
     color: lightgray;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
     text-align: center;
     height: 100%;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 .flex {
     display: flex;
-    height: 100%;
 }
 
 div#container {
@@ -32,7 +33,28 @@ div#container {
     transition: background-color 0.5s linear;
 }
 
-/* Effects */
+.monospace {
+    font-family: monospace;
+    font-size: small;
+}
+
+h1 {
+    font-family: Bangers, cursive;
+    text-align: center;
+    font-size: 80px;
+    color: rgb(255, 255, 255);
+    text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
+}
+h2{
+    font-size: 30px;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+a, a:hover, a:visited {
+    color: white;
+}
+
+/* EFFECTS */
 
 .displayNone {
     display: none !important;
@@ -50,7 +72,28 @@ div#container {
     transition: all 600ms ease-in-out;
 }
 
-/* opening screen */
+/* PC THINKING ANIMATION */
+
+.slider {
+    animation: slide infinite;
+    animation-duration: .6s;
+    background-size: cover;
+    background-image: url('./imgs/rockR.png');
+    width: 70px;
+    height: 70px;
+}
+
+@keyframes slide {
+    33% {
+        background-image: url('./imgs/paperR.png');
+    }
+
+    66% {
+        background-image: url('./imgs/scissorR.png');
+    }
+}
+
+/* OPENING SCREEN */
 
 div.opening {
     font-family: Bangers, cursive;
@@ -64,14 +107,6 @@ div.opening {
     align-items: center;
     flex-direction: column;
 
-}
-
-h1 {
-    font-family: Bangers, cursive;
-    text-align: center;
-    font-size: 80px;
-    color: rgb(255, 255, 255);
-    text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
 }
 
 .opening h1 {
@@ -122,7 +157,6 @@ button.startPlay:active {
 /* SCORE */
 
 #score {
-    display: flex;
     height: 30px;
     justify-content: center;
     align-items: center;
@@ -133,12 +167,14 @@ button.startPlay:active {
     flex-direction: row;
     width: inherit;
     gap: 10px;
+    height: 100%;
 }
 
 #score #playerPoints {
     flex-direction: row-reverse;
     width: inherit;
     gap: 10px;
+    height: 100%;
 }
 
 .playerPoint,
@@ -169,23 +205,22 @@ button.startPlay:active {
 
 #roundResult {
     height: 30px;
-    display: flex;
     align-items: flex-end;
     justify-content: center;
 }
 #roundResult p {
     font-size: 16px;
-    
+    margin: 0;    
 }
-
 
 div.fixbottom {
     position: fixed;
     bottom: 32px;
     width: 800px;
+
 }
 
-#theGame div.flex {
+#contentPlayers{
     align-items: flex-end;
     justify-content: space-between;
     z-index: 0;
@@ -197,8 +232,7 @@ div.fixbottom {
 }
 
 #playerChoices {
-    display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: row;
 }
 
@@ -208,10 +242,12 @@ div.fixbottom {
     background: url(./imgs/akCloud.png) center center no-repeat;
     background-size: 90%;
     margin-bottom: 50px;
-    display: flex;
+
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+
+    cursor: pointer;
 }
 
 #machineChoice {
@@ -229,16 +265,6 @@ div.fixbottom {
     margin: 0 !important;
 }
 
-p {
-    font-size: 50px;
-    margin: 0;
-}
-
-.monospace {
-    font-family: monospace;
-    font-size: small;
-}
-
 div.controls {
    position: absolute;
    top: -40px;
@@ -254,31 +280,6 @@ div.controls {
     padding-left: 50px;
 }
 
-button {
-    box-shadow: inset 0px 1px 3px 0px #91b8b3;
-    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-    background-color: #768d87;
-    border-radius: 5px;
-    border: 1px solid #566963;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 13px;
-    padding: 11px 23px;
-    text-decoration: none;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-button:hover {
-    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-    background-color: #6c7c7c;
-}
-
-button:active {
-    position: relative;
-    top: 1px;
-}
-
 .disabled {
     pointer-events: none;
 }
@@ -288,26 +289,56 @@ li.controls {
     text-align: left;
 }
 
-/* PC THINKING ANIMATION */
+/* FINISHED */
 
-.slider {
-    animation: slide infinite;
-    /* animation-delay: .05s; */
-    animation-duration: .6s;
-    background-size: cover;
-    background-image: url('./imgs/rockR.png');
-    width: 70px;
-    height: 70px;
+#endGame{
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,0.75);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.showResult {
+    flex-direction: column;
+    height: 90%;
+    width: 800px;
+    box-shadow: 0px 5px 12px 1px rgba(0,0,0,0.82);
+    justify-content: space-between;
+    background-color: #030dbe;
+}
+.showResult .flex{
+    justify-content: center;
+    gap: 50px;
 }
 
-@keyframes slide {
-    33% {
-        background-image: url('./imgs/paperR.png');
-    }
+button.restart {
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color: #768d87;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 11px 23px;
+    text-decoration: none;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    box-shadow: 0px 3px 12px 1px rgba(0,0,0,0.82);
+}
 
-    66% {
-        background-image: url('./imgs/scissorR.png');
-    }
+button.restart:hover {
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
+}
+
+button.restart:active {
+    position: relative;
+    top: 1px;
 }
 
 @media screen and (max-width: 800px) {
