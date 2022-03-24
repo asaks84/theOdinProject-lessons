@@ -14,7 +14,7 @@ const slider = document.querySelector('.slider');
 
 const divEndGame = document.querySelector('#endGame');
 
-const restultTimer = 5;
+const restultTimer = 1500;
 
 // game functions
 function isTheWinner() {
