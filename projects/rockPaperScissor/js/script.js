@@ -151,12 +151,10 @@ function fadeOut(disable, dontRemove, transitionTime) {
 
     disable.classList.remove('visible');
     disable.classList.add('hidden');
-    disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
-
-    console.log(disable)
-    // if (dontRemove != true) {
-    //     disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
-    // };
+   
+    if (dontRemove != true) {
+        disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
+    };
 
 };
 
