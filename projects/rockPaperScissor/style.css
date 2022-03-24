@@ -144,7 +144,8 @@ button.startPlay:active {
 /* GAME SCREEN */
 
 #theGame {
-    position: relative;
+    position: absolute;
+    top:0;
     display: flex;
     justify-content: center;
     color: rgb(255, 255, 255);
@@ -303,6 +304,7 @@ li.controls {
 }
 .showResult {
     flex-direction: column;
+    position: absolute;
     height: 90%;
     width: 800px;
     box-shadow: 0px 5px 12px 1px rgba(0,0,0,0.82);
@@ -342,8 +344,9 @@ button.restart:active {
 }
 
 @media screen and (max-width: 800px) {
-    div.fixbottom {
-        width: 580px;
+    div.fixbottom,
+    .showResult {
+        width: 650px;
     }
 
     .choiceBtn {
@@ -361,8 +364,9 @@ button.restart:active {
 }
 
 @media screen and (max-width: 450px) {
-    div.fixbottom {
-        width: 310px;
+    div.fixbottom,
+    .showResult {
+        width: 380px;
     }
 
     .choiceBtn {

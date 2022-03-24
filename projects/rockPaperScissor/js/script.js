@@ -81,7 +81,8 @@ function playRound(playerSelection) {
     if (gameOver()) {
         isTheWinner();
         return
-    } gameContinue(); // continue playing
+    } 
+    gameContinue(); // continue playing
 
     // printing round results on console
     console.warn(`Round: %c${roundCounter}`, 'color: red;');
@@ -105,22 +106,21 @@ function controls(e) {
 function gameRestart() {
     const removeScorePoints = Array.from(document.querySelectorAll('.winnerPoint'));
     const resultScore = divEndGame.querySelector('.visible')
-    console.log(resultScore);
 
     // reset score
     pcPoints = 0;
     playerPoints = 0;
     removeScorePoints.forEach(e => { e.classList.remove('winnerPoint') });
-    //console.clear();
-    
+    console.clear();
+
     //reset rounds
     roundCounter = 1;
 
     gameContinue();
 
     // close Game Result
+    fadeOut(divEndGame, true);
     fadeOut(resultScore);
-    fadeOut(divEndGame);
 };
 
 function showEndGame(result) {
@@ -149,22 +149,27 @@ function continuePlaying() {
 function fadeOut(disable, dontRemove, transitionTime) {
     if (transitionTime) disable.style.transitionDuration = transitionTime;
 
+    console.log(disable);
+
     disable.classList.remove('visible');
     disable.classList.add('hidden');
-   
-    if (dontRemove != true) {
-        disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
-    };
+
+    // Having some problems with this part of the game on the end,
+    // I changed some css code to not use more displaynone for now
+
+    // if (dontRemove != true) {
+    //     disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
+    // };
 
 };
 
 function fadeIn(enable, timer, transitionTime) {
     if (!timer) timer = 0;
-    enable.classList.remove('displayNone');
-   // if (transitionTime) enable.style.transitionDuration = transitionTime;
-    // if (enable.classList.contains('displayNone')) {
-    //     enable.classList.remove('displayNone');
-    // };
+
+    if (transitionTime) enable.style.transitionDuration = transitionTime;
+    if (enable.classList.contains('displayNone')) {
+        enable.classList.remove('displayNone');
+    };
     setTimeout(() => {
         enable.classList.remove('hidden');
         enable.classList.add('visible');
@@ -194,7 +199,8 @@ function showRoundResult(result) {
 };
 
 function gameContinue() {
-    stopPlaying()
+
+    stopPlaying();
 
     setTimeout(() => {
         machineChoice.removeChild(machineChoice.firstChild);
