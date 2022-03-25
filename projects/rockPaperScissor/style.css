@@ -45,7 +45,8 @@ h1 {
     color: rgb(255, 255, 255);
     text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
 }
-h2{
+
+h2 {
     font-size: 30px;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
@@ -145,14 +146,92 @@ button.startPlay:active {
 
 #theGame {
     position: absolute;
-    top:0;
+    top: 0;
     display: flex;
     justify-content: center;
     color: rgb(255, 255, 255);
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     height: 100%;
     width: 100%;
-    background:  url('./imgs/sky.jpg') center 50px repeat-x, url('./imgs/floor.jpg') center bottom repeat-x #010efd;
+    background: url('./imgs/sky.jpg') center 50px repeat-x, url('./imgs/floor.jpg') center bottom repeat-x #010efd;
+}
+
+div.fixbottom {
+    position: fixed;
+    bottom: 32px;
+    width: 800px;
+
+}
+
+#contentPlayers {
+    align-items: flex-end;
+    justify-content: space-between;
+    z-index: 0;
+}
+
+#theGame h1 {
+    margin: 120px 0 10px 0;
+    font-family: Bangers, cursive;
+}
+
+#playerChoices {
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.choiceBtn {
+    width: 120px;
+    height: 120px;
+    background: url(./imgs/akCloud.png) center center no-repeat;
+    background-size: 90%;
+    margin-bottom: 50px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+#machineChoice {
+    width: 150px;
+    height: 150px;
+    background: url(./imgs/akCloud.png) center center no-repeat;
+    margin-bottom: 50px;
+    background-size: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#machineChoice h1 {
+    margin: 0 !important;
+}
+.controlposition {
+    align-items: flex-end;
+}
+
+div.controls {
+    position: fixed;
+    bottom: 45px;
+}
+
+.controls h3 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.keybind ul {
+    padding-left: 50px;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+li.controls {
+    list-style: none;
+    text-align: left;
 }
 
 /* SCORE */
@@ -209,109 +288,36 @@ button.startPlay:active {
     align-items: flex-end;
     justify-content: center;
 }
+
 #roundResult p {
     font-size: 16px;
-    margin: 0;    
-}
-
-div.fixbottom {
-    position: fixed;
-    bottom: 32px;
-    width: 800px;
-
-}
-
-#contentPlayers{
-    align-items: flex-end;
-    justify-content: space-between;
-    z-index: 0;
-}
-
-#theGame h1 {
-    margin: 120px 0 10px 0;
-    font-family: Bangers, cursive;
-}
-
-#playerChoices {
-    justify-content: space-evenly;
-    flex-direction: row;
-}
-
-.choiceBtn {
-    width: 120px;
-    height: 120px;
-    background: url(./imgs/akCloud.png) center center no-repeat;
-    background-size: 90%;
-    margin-bottom: 50px;
-
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-}
-
-#machineChoice {
-    width: 150px;
-    height: 150px;
-    background: url(./imgs/akCloud.png) center center no-repeat;
-    margin-bottom: 50px;
-    background-size: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#machineChoice h1 {
-    margin: 0 !important;
-}
-
-div.controls {
-   position: absolute;
-   top: -40px;
-   right: 40px;
-}
-
-.controls h3 {
-    margin-top: 50px;
-    margin-bottom: 10px;
-}
-
-.keybind ul {
-    padding-left: 50px;
-}
-
-.disabled {
-    pointer-events: none;
-}
-
-li.controls {
-    list-style: none;
-    text-align: left;
+    margin: 0;
 }
 
 /* FINISHED */
 
-#endGame{
+#endGame {
     position: absolute;
     top: 0;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.75);
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
     z-index: 10;
 }
+
 .showResult {
     flex-direction: column;
     position: absolute;
     height: 90%;
     width: 800px;
-    box-shadow: 0px 5px 12px 1px rgba(0,0,0,0.82);
+    box-shadow: 0px 5px 12px 1px rgba(0, 0, 0, 0.82);
     justify-content: space-between;
     background-color: #030dbe;
 }
-.showResult .flex{
+
+.showResult .flex {
     justify-content: center;
     gap: 50px;
 }
@@ -330,7 +336,7 @@ button.restart {
     padding: 11px 23px;
     text-decoration: none;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    box-shadow: 0px 3px 12px 1px rgba(0,0,0,0.82);
+    box-shadow: 0px 3px 12px 1px rgba(0, 0, 0, 0.82);
 }
 
 button.restart:hover {
@@ -344,6 +350,7 @@ button.restart:active {
 }
 
 @media screen and (max-width: 800px) {
+
     div.fixbottom,
     .showResult {
         width: 650px;
@@ -360,10 +367,14 @@ button.restart:active {
     #theGame h1 {
         margin-top: 20px;
     }
-    .controls { display: none;}
+
+    .controls {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 450px) {
+
     div.fixbottom,
     .showResult {
         width: 380px;

@@ -8,7 +8,6 @@ const butonRestart = document.querySelectorAll('button.restart');
 
 const machineScore = Array.from(document.querySelectorAll('.machinePoint'));
 const playerScore = Array.from(document.querySelectorAll('.playerPoint'));
-
 const machineChoice = document.querySelector('#machineChoice');
 const slider = document.querySelector('.slider');
 
@@ -16,9 +15,20 @@ const divEndGame = document.querySelector('#endGame');
 
 const restultTimer = 700;
 
-// game functions
+// I like the result of the console game I created 
+// and because of that, I didn't remove it.
+
+// GAME FUNCTIONS
+
+function gameOver() {
+    return pcPoints == 5 || playerPoints == 5
+};
+function capitalyze(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
 function isTheWinner() {
-    stopPlaying();
+    disableButtons();
     console.error('THE GAME IS FUCKIN OVER!');
     if (pcPoints > playerPoints) {
         showEndGame("lost");
@@ -27,12 +37,6 @@ function isTheWinner() {
         showEndGame("won");
         console.log('%c NICE! YOU WON THE GAME!', 'color: green;');
     };
-};
-function gameOver() {
-    return pcPoints == 5 || playerPoints == 5
-};
-function capitalyze(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
 function computerPlay() {
@@ -93,58 +97,31 @@ function playRound(playerSelection) {
     ++roundCounter;
 };
 
-function controls(e) {
-    const control = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (gameOver()) return
-    if (!control) return;
-    control.click();
-};
-
 
 // UI
 
-function gameRestart() {
-    const removeScorePoints = Array.from(document.querySelectorAll('.winnerPoint'));
-    const resultScore = divEndGame.querySelector('.visible')
-
-    // reset score
-    pcPoints = 0;
-    playerPoints = 0;
-    removeScorePoints.forEach(e => { e.classList.remove('winnerPoint') });
-    console.clear();
-
-    //reset rounds
-    roundCounter = 1;
-
-    gameContinue();
-
-    // close Game Result
-    fadeOut(divEndGame, true);
-    fadeOut(resultScore);
-};
-
-function showEndGame(result) {
-    const screenToShow = document.querySelector(`#${result}`);
-    const pointsResult = `<h3>Result:</h3> <h3>${playerPoints} x ${pcPoints}</h3>`;
-    const finalScore = screenToShow.querySelector('.finalScore');
-
-    finalScore.innerHTML = pointsResult;
-    fadeIn(divEndGame);
-    fadeIn(screenToShow);
-};
-
-function stopPlaying() {
+function disableButtons() {
     buttons.forEach(button => {
         button.classList.add('disabled')
     });
 };
 
-function continuePlaying() {
+function enableButtons() {
     buttons.forEach(button => {
         button.classList.remove('disabled');
     });
 };
 
+function gameContinue() {
+
+    disableButtons();
+
+    setTimeout(() => {
+        machineChoice.removeChild(machineChoice.firstChild);
+        machineChoice.appendChild(slider);
+        enableButtons();
+    }, restultTimer);
+};
 
 function fadeOut(disable, dontRemove, transitionTime) {
 
@@ -160,8 +137,6 @@ function fadeOut(disable, dontRemove, transitionTime) {
 
     if (transitionTime) disable.style.transitionDuration = transitionTime;
 
-
-
     disable.classList.remove('visible');
     disable.classList.add('hidden');
 
@@ -171,7 +146,7 @@ function fadeOut(disable, dontRemove, transitionTime) {
 };
 
 function fadeIn(enable, timer, transitionTime) {
-    if (!timer) timer = 0;
+    if (!timer) timer = 10;
 
     if (transitionTime) enable.style.transitionDuration = transitionTime;
     if (enable.classList.contains('displayNone')) {
@@ -181,6 +156,33 @@ function fadeIn(enable, timer, transitionTime) {
         enable.classList.remove('hidden');
         enable.classList.add('visible');
     }, timer);
+};
+
+function startPlaying() {
+    const gameScreen = document.querySelector('#theGame');
+    const toCloseOpeningScreen = document.querySelector('#openingScreen');
+    const fadeStart = 600;
+
+    fadeOut(toCloseOpeningScreen);
+    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameScreen, fadeStart));
+
+};
+
+function showPcSelection(pcResult) {
+    const imgArray = ['./imgs/rockR.png', './imgs/paperR.png', './imgs/scissorR.png'];
+    const img = document.createElement('img');
+
+    while (machineChoice.firstChild) {
+        machineChoice.removeChild(machineChoice.firstChild);
+    };
+
+    img.src = imgArray[pcResult];
+    img.width = '70';
+    machineChoice.appendChild(img);
+};
+
+function addScore(playerPoint, point) {
+    playerPoint[point - 1].classList.add('winnerPoint');
 };
 
 function showRoundResult(result) {
@@ -205,49 +207,50 @@ function showRoundResult(result) {
     }, restultTimer);
 };
 
-function gameContinue() {
+function showEndGame(result) {
+    const screenToShow = document.querySelector(`#${result}`);
+    const pointsResult = `<h3>Result:</h3> <h3>${playerPoints} x ${pcPoints}</h3>`;
+    const finalScore = screenToShow.querySelector('.finalScore');
 
-    stopPlaying();
-
-    setTimeout(() => {
-        machineChoice.removeChild(machineChoice.firstChild);
-        machineChoice.appendChild(slider);
-        continuePlaying();
-    }, restultTimer);
+    finalScore.innerHTML = pointsResult;
+    fadeIn(divEndGame);
+    fadeIn(screenToShow);
 };
 
-function showPcSelection(pcResult) {
-    const imgArray = ['./imgs/rockR.png', './imgs/paperR.png', './imgs/scissorR.png'];
-    const img = document.createElement('img');
+function gameRestart() {
+    const removeScorePoints = Array.from(document.querySelectorAll('.winnerPoint'));
+    const resultScore = divEndGame.querySelector('.visible')
 
-    while (machineChoice.firstChild) {
-        machineChoice.removeChild(machineChoice.firstChild);
-    };
+    // reset score
+    pcPoints = 0;
+    playerPoints = 0;
+    removeScorePoints.forEach(e => { e.classList.remove('winnerPoint') });
+    console.clear();
 
-    img.src = imgArray[pcResult];
-    img.width = '70';
-    machineChoice.appendChild(img);
+    //reset rounds
+    roundCounter = 1;
+
+    gameContinue();
+
+    // close Game Result
+    fadeOut(divEndGame, true);
+    fadeOut(resultScore);
 };
 
-function addScore(playerPoint, point) {
-    playerPoint[point - 1].classList.add('winnerPoint');
-};
+// using keyboard
 
-function startPlaying() {
-    const gameScreen = document.querySelector('#theGame');
-    const toCloseOpeningScreen = document.querySelector('#openingScreen');
-    const fadeStart = 600;
-
-    fadeOut(toCloseOpeningScreen);
-    toCloseOpeningScreen.addEventListener('transitionend', () => fadeIn(gameScreen, fadeStart));
-
+function controls(e) {
+    const control = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (gameOver()) return
+    if (!control) return;
+    control.click();
 };
 
 // playing the game
 buttons.forEach(button => button.addEventListener('click', playRound));
 window.addEventListener('keydown', controls);
 
-// start the game
+// start playing
 butonStart.addEventListener('click', startPlaying);
 
 // reset game
