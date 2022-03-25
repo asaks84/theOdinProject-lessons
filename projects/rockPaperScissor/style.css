@@ -2,7 +2,7 @@
 
 /* reset */
 
-html, body, .controls {
+html, body, .controls, ul {
     margin: 0;
     padding: 0;
     border: 0;
@@ -156,6 +156,22 @@ button.startPlay:active {
     background: url('./imgs/sky.jpg') center 50px repeat-x, url('./imgs/floor.jpg') center bottom repeat-x #010efd;
 }
 
+.header {
+    flex-direction: column;
+    margin-bottom: 45px;
+}
+
+div.controls {
+    margin-top: auto;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+/* .keybind ul {
+    padding-left: 50px;
+} */
+
 div.fixbottom {
     position: fixed;
     bottom: 32px;
@@ -207,23 +223,8 @@ div.fixbottom {
 #machineChoice h1 {
     margin: 0 !important;
 }
-.controlposition {
-    align-items: flex-end;
-}
 
-div.controls {
-    position: fixed;
-    bottom: 45px;
-}
 
-.controls h3 {
-    margin-top: 50px;
-    margin-bottom: 10px;
-}
-
-.keybind ul {
-    padding-left: 50px;
-}
 
 .disabled {
     pointer-events: none;
