@@ -14,7 +14,7 @@ const slider = document.querySelector('.slider');
 
 const divEndGame = document.querySelector('#endGame');
 
-const restultTimer = 1500;
+const restultTimer = 50;
 
 // game functions
 function isTheWinner() {
@@ -81,7 +81,7 @@ function playRound(playerSelection) {
     if (gameOver()) {
         isTheWinner();
         return
-    } 
+    }
     gameContinue(); // continue playing
 
     // printing round results on console
@@ -147,20 +147,27 @@ function continuePlaying() {
 
 
 function fadeOut(disable, dontRemove, transitionTime) {
+
+    // Created a function displayNone to use on eventListner insted of anonnymous function
+    // so this way I can use the removeEventListner.
+    // Then removing the eventListner. This solved the problem with displayNone
+    // auto change without calling fadeOut().
+
+    const displayNone = function () {
+        disable.classList.add('displayNone');
+        disable.removeEventListener('transitionend', displayNone);
+    };
+
     if (transitionTime) disable.style.transitionDuration = transitionTime;
 
-    console.log(disable);
+
 
     disable.classList.remove('visible');
     disable.classList.add('hidden');
 
-    // Having some problems with this part of the game on the end,
-    // I changed some css code to not use more displaynone for now
-
-    // if (dontRemove != true) {
-    //     disable.addEventListener('transitionend', () => disable.classList.add('displayNone'));
-    // };
-
+    if (dontRemove != true) {
+        disable.addEventListener('transitionend', displayNone);
+    };
 };
 
 function fadeIn(enable, timer, transitionTime) {
