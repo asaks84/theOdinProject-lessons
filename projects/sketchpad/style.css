@@ -1,0 +1,214 @@
+:root {
+    --gridBg: #dbdbdb;
+}
+
+html, body {
+    background-color: rgb(192, 192, 192);
+    color: rgb(44, 44, 44);
+    font-family: monospace;
+    font-size: 13px;
+    text-align: center;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+#container {
+    height: 100%;
+    transition: background-color 0.5s linear;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 20px;
+    margin-top: 0;
+    /* to fix overflow */
+    padding-top: .67em;
+}
+
+h4 {
+    margin: 0;
+}
+
+#content {
+    justify-content: center;
+    align-items: flex-end;
+    gap: 50px;
+}
+
+#grid {
+    flex-shrink: 0;
+    width: 500px;
+    height: 500px;
+    box-shadow: 0px 5px 12px 1px rgba(0, 0, 0, 0.82);
+    background-color: var(--gridBg);
+    display: grid;
+
+}
+
+#grid div {
+    border: 1px solid #e5e5e5
+}
+
+.alignControls {
+    flex-direction: column;
+    height: 500px;
+    width: 100px;
+}
+
+.alignControls:first-child {
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.control {
+    justify-content: start;
+    flex-direction: column;
+    margin-right: auto;
+    gap: 10px;
+}
+
+.control .flex {
+    align-items: center;
+    gap: 10px;
+}
+
+.control .flex:last-child {
+    margin-top: 30px;
+}
+
+hr {
+    border-top: 1px dashed #000000;
+    width: 100%;
+}
+
+#controls h3 {
+    margin-bottom: auto;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .3;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-left: auto;
+}
+
+.switch input[type=radio] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 34px;
+}
+
+.changeColor input[type=radio] {
+    left: 25px;
+}
+
+input[type=color] {
+    width: 27px;
+    height: 27px;
+    border-radius: 30%;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+    background-color: #c62d1f;
+}
+
+input:checked+.slider:before {
+    transform: translateX(16px);
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 10px;
+}
+
+input[type='range']::-moz-range-thumb {
+    appearance: none;
+    background-color: #c62d1f;
+    width: 20px;
+    height: 20px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    box-shadow: 1px 1px 0px 0px #8a2a21;
+    background: linear-gradient(to bottom, #ff6759 25%, #ffe1e1 100%);
+    background-color: #c62d1f;
+    border: 1px solid #d02718;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+button.control {
+    box-shadow: 3px 4px 0px 0px #8a2a21;
+    background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+    background-color: #c62d1f;
+    border-radius: 18px;
+    border: 1px solid #d02718;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 7px 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #810e05;
+}
+
+button.control:hover {
+    background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+    background-color: #f24437;
+}
+
+button.control:active {
+    position: relative;
+    top: 1px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}

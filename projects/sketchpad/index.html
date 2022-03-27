@@ -9,12 +9,9 @@
     <meta name="description" content="This is another project to the Odin Project. 
     To create a sketchpad with some functions. Read text below">
 
-    <!-- Create a webpage with a 16x16 grid of square divs.
-         Create the divs using JavaScript. Don’t try making them by hand 
-         with copy and pasting in your HTML file!
-         It’s best to put your grid squares inside another “container” div 
-         (which can go directly in your HTML).
-         
+    <!-- 
+        Create a webpage with a 16x16 grid of square divs.
+                 
          There are several different ways to make the divs appear as a grid (versus just one on each line). Feel free to use any or play with each of them: 
          - float/clear
          - inline-block
@@ -58,11 +55,60 @@
     <title>SKETCHPAD</title>
 
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
 </head>
 
 <body>
+    <div id="contianer">
+        <header>
+            <h1>./sketchpad</h1>
+        </header>
+        <div id="content" class="flex">
+            <div id="controls" class="alignControls flex">
+                <h3>./controls</h3>
+                <div class="control flex">
+                    <h4>color range</h4>
+                    <div class="flex">
+                        <input class="changeColor" type="color">
+                        <label class="switch">
+                            <input type="radio" name="control" class="changeColor" value="colorPicker" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <hr>
+                    <h4>grid scale</h4>
+                    <div class="flex">
+                        <input type="range" value="16" min="1" max="32" step="1">
+                    </div>
+                    <div class="flex disable">
+                        <h4>rainbow</h4>
+                        <label class="switch">
+                            <input type="radio" name="control" class="color" value="rainbow">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="flex">
+                        <h4>eraser</h4>
+                        <label class="switch">
+                            <input type="radio" name="control" class="color" value="eraser">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="flex">
+                        <button id="clear" class="control">clear</button> <button id="reset" class="control">reset</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="grid"></div>
+            <div class="alignControls"></div>
+        </div>
+    </div>
+    <footer>
+        <h4>This game is part of a JavaScript coding education by <a href="http://theodinproject.com">theOdinProject</a>.</h4>
+        <h4>Developed by <a href="https://github.com/baiduh">@baiduh</a>.</h4>
 
+    </footer>
+    <script src="./script.js"></script>
 </body>
 
 </html>
