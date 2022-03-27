@@ -29,6 +29,10 @@ function setGridSize(e) {
     clearGrid();
 }
 
+function setColor(newColor) {
+    color = newColor;
+};
+
 function setMode() {
     option = document.querySelector('input[name=control]:checked').value;
     
@@ -42,18 +46,14 @@ function setMode() {
     }
 };
 
-function setColor(newColor) {
-    color = newColor;
-};
-
 
 // GRID CHANGES
 
 function rainbow() {
-    const randomR = Math.floor(Math.random() * 256)
-    const randomG = Math.floor(Math.random() * 256)
-    const randomB = Math.floor(Math.random() * 256)
-    return color = `rgb(${randomR}, ${randomG}, ${randomB})`
+    const colorR = Math.floor(Math.random() * 256)
+    const colorG = Math.floor(Math.random() * 256)
+    const colorB = Math.floor(Math.random() * 256)
+    return color = `rgb(${colorR}, ${colorG}, ${colorB})`
 }
 
 function changeColor(e) {
