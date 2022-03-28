@@ -8,6 +8,7 @@ html, body {
     font-family: monospace;
     font-size: 13px;
     text-align: center;
+    height: 100%;
     min-height: 100%;
     margin: 0;
     padding: 0;
@@ -19,9 +20,11 @@ html, body {
 }
 
 #container {
-    height: 100%;
-    transition: background-color 0.5s linear;
+    min-height: 100%;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header h1 {
@@ -39,6 +42,12 @@ h4 {
     justify-content: center;
     align-items: flex-end;
     gap: 50px;
+}
+
+footer{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
 }
 
 #grid {
@@ -205,10 +214,22 @@ button.control:active {
     top: 1px;
 }
 
-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 5px;
+@media screen and (max-width: 780px) {
+    #content {
+        flex-direction: column-reverse;
+        min-height: 100%;
+        align-items: center;
+    }
+    .alignControls{
+        height: auto;
+    }
+    #controls h3{
+        margin: 0;
+    }
+    .control{
+        margin: 0;
+    }        
+    .alignControls:last-child{
+        display: none;
+    }
 }

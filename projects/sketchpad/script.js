@@ -13,6 +13,9 @@ const defaultSize = 16;
 const defaultColor = '#525252';
 const eraser = '#dbdbdb'
 
+
+// INIT
+
 let option = document.querySelector('input[name=control]:checked').value;
 let size = defaultSize;
 let color = defaultColor;

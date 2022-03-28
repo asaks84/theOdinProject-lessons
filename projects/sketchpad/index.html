@@ -58,7 +58,7 @@
 </head>
 
 <body>
-    <div id="contianer">
+    <div id="container" class="flex">
         <header>
             <h1>./sketchpad</h1>
         </header>
@@ -74,7 +74,8 @@
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <hr>
+                    <div class="flex"><hr></div>
+                    
                     <h4>grid scale</h4>
                     <div class="flex">
                         <input type="range" value="16" min="1" max="32" step="1">
@@ -94,20 +95,22 @@
                         </label>
                     </div>
                     <div class="flex">
-                        <button id="clear" class="control">clear</button> <button id="reset" class="control">reset</button>
+                        <button id="clear" class="control">clear</button> <button id="reset"
+                            class="control">reset</button>
                     </div>
-                    
+
                 </div>
             </div>
             <div id="grid"></div>
             <div class="alignControls"></div>
         </div>
-    </div>
-    <footer>
-        <h4>This game is part of a JavaScript coding education by <a href="http://theodinproject.com">theOdinProject</a>.</h4>
-        <h4>Developed by <a href="https://github.com/baiduh">@baiduh</a>.</h4>
+        <footer>
+            <h4>This game is part of a JavaScript coding education by <a
+                    href="http://theodinproject.com">theOdinProject</a>.</h4>
+            <h4>Developed by <a href="https://github.com/baiduh">@baiduh</a>.</h4>
 
-    </footer>
+        </footer>
+    </div>
     <script src="./script.js"></script>
 </body>
 
