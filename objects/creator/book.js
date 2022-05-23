@@ -2,10 +2,12 @@ function book(bookName, bookAuthor, bookPages) {
     this.name = bookName,
     this.author = bookAuthor,
     this.pages = bookPages
-    
-    this.info = ()  => `${this.name} by ${this.author} actualy have ${this.pages} pages.`;
-
 };
+
+book.prototype.info = function() { 
+    return `${this.name} by ${this.author} actualy have ${this.pages} pages.`;
+}
+
 
 // const tempName = this.name;
 //     function capitalize (aString) {
@@ -21,4 +23,5 @@ function book(bookName, bookAuthor, bookPages) {
 //     const propertyName = capitalize(tempName).replace(punctRemove, "");
 
 const oHotdogGostoso = new book("O hotdog gostoso", "Eu mermo", 300);
+
 console.log(oHotdogGostoso.info());
