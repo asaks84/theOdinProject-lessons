@@ -1,13 +1,12 @@
 export class Book {
 
     // setting restrict keys
-    #pages;
     #read;
 
     constructor(name, author, pages, read){
         this.name = name;
         this.author = author;
-        this.#pages = pages;
+        this.pages = pages;
         this.#read = read;
     };
 
@@ -17,7 +16,9 @@ export class Book {
     };
 
     // Getting values of object keys
-    get pages(){ return this.#pages; }
+    // get name(){ return this.#name; }
+    // get author(){ return this.#author; }
+    // get pages(){ return this.#pages; }
     get read(){ return this.#read; }
     
 };  

@@ -1,23 +1,26 @@
 import { Book } from "./Book.js"
 
 function ShowProperties(obj) {
-    console.log(obj.name+'\n'+ obj.author+'\n'+obj.pages+'\n'+obj.read)
+    return (obj.name+'\n'+ obj.author+'\n'+obj.pages+'\n'+obj.read)
 };
 
 const libraryContent = [];
 
-// 
-// book constructor
-
-function addBookOnLibrary(name, author, pages, read){
+// Array functions
+function addToLibrary(name, author, pages, read){
     const newBook = new Book(name, author, pages, read);
     libraryContent.push(newBook);
-}
+};
 
-addBookOnLibrary("The Hobbit", "J. R. R. Tolkien", 295, true);
-addBookOnLibrary("Zen e A arte da Manutenção de Motocicletas", "Robert M. Pirsig", 316, true);
-addBookOnLibrary("The Lord of The Rings", "Robert M. Pirsig", 316, true);
+function removeFromLibrary(toRemove){
+    libraryContent.splice(toRemove,1);
+};
 
-console.log(libraryContent[2].pages);
+// Tests
+addToLibrary("The Hobbit", "J. R. R. Tolkien", 295, true);
+addToLibrary("Zen e A arte da Manutenção de Motocicletas", "Robert M. Pirsig", 316, true);
+addToLibrary("The Lord of The Rings", "J. R. R. Tolkien", 316, true);
 
-// ShowProperties(libraryContent[2])
+removeFromLibrary(1);
+
+console.log(libraryContent[1]);
