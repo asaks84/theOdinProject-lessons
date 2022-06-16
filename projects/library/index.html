@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>library model</title>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Full container grid -->
+
+        <header class="flex">
+            <div class="brand flex">
+                <img src="./images/logo-cp-admin.png" alt="" class="">
+            </div>
+            
+            <div class="flex">
+                
+                <!-- search bar -->
+                <form id="search" action="#" method="get">
+                    <div class=" align-top">
+                        <input id="searchbar" type="search" placeholder=" "
+                            class="text-xs focus:outline-none bg-bgSearchBar/[.0] focus:bg-bgSearchBar/50 text-white p-1.5  pl-3 pr-6 my-0.5 rounded-xl">
+                        <label for="searchbar">Busca...</label>
+                        <span class="mdi mdi-magnify"></span>
+                    </div>
+                </form>
+
+            </div>
+            <!-- mobile responsive -->
+            <div class="responsiveNav flex" >
+                <label class="searchbar mdi mdi-magnify"></label>
+                <label class="nav mdi mdi-menu"></label>
+            </div>
+        </header>
+
+        <div class="flex col-span2">
+            <!-- side content (menu & widgets)-->
+
+            <main>
+                <!-- main header content -->
+                <section id="home-content-header" class="flex">
+
+                    <!-- hightlight header -->
+                    <section class="homescreen">
+
+
+                        <div>
+                            <!-- page title -->
+                            <h2>Dashboard</h2>
+                            <h3>${name}, bem vindo.</h3>
+                            <p>
+                                Mensagem de lembrete<br>
+                                Mensagem de lembrete
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <!-- section highlight content -->
+                    <div class="boxed flex">
+                        <section class="grid cards">
+
+                            <div class="mincard col-span2 bg-cardYellow"></div>
+                            <div class="mincard bg-cardBlue"></div>
+                            <div class="mincard bg-cardRed"></div>
+                            <div class="mincard col-span2 bg-cardRed"></div>
+                        </section>
+
+                        <section class="grid">
+                            <!-- second highlight items -->
+                            <div class="mincard bg-cardBlue"></div>
+                            <div class="mincard bg-cardRed"></div>
+                            <div class="mincard"></div>
+                            <div class="mincard bg-cardGreen"></div>
+                            <div class="mincard col-span2"></div>
+                        </section>
+                    </div>
+
+                </section>
+
+                <!-- section page content -->
+                <div class="el-spc">
+                    <section class="grid cards el-spc">
+                        <div class="mincard"></div>
+                        <div class="mincard"></div>
+                        <div class="mincard"></div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer class="flex">
+            <p>developed by: <a href="http://theac.com.br" target="_blank">theac team</a></p>
+        </footer>
+    </div>
+</body>
+</html>

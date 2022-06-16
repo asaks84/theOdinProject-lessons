@@ -1,0 +1,209 @@
+@import url("./reset.css");
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  height: 100%;
+  min-height: 100%;
+  background-color: var(--background-color);
+  line-height: 1.3;
+  letter-spacing: -0.04rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+a, a:visited {
+  color: var(--nav-txt-color);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+#wrapper {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content 1fr;
+  background-color: var(--bgMain);
+  min-height: 100%;
+}
+#wrapper.show::before {
+  content: "";
+  position: fixed;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.brand img {
+  display: block;
+  max-width: 177px;
+  max-height: 35px;
+  width: auto;
+  height: auto;
+}
+
+header {
+  grid-column: span 2;
+  column-span: all;
+  background: var(--bgHeader);
+  justify-content: flex-end;
+}
+
+.brand {
+  height: fit-content;
+  width: 12.5rem;
+  align-items: center;
+  margin: var(--headerMargin);
+  margin-right: auto;
+}
+
+header > div + div {
+  height: fit-content;
+  width: auto;
+  align-items: center;
+  margin: var(--headerMargin);
+  margin: auto 0.5rem;
+}
+
+.responsiveNav {
+  color: white;
+  width: max-content;
+  display: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+@media (max-width: 900px) {
+  .responsiveNav {
+    display: inline-block;
+  }
+  .responsiveNav > :first-child {
+    visibility: hidden;
+  }
+}
+@media (max-width: 599px) {
+  .responsiveNav > :first-child {
+    visibility: visible;
+  }
+}
+.responsiveNav > label {
+  display: inline-block;
+  line-height: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  grid-column: span 2;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 5px;
+}
+
+main {
+  width: inherit;
+}
+main > section:not(#home-content-header) {
+  gap: 0.5rem;
+}
+
+form#search.show {
+  top: 0.5rem;
+  z-index: 10;
+}
+@media (max-width: 599px) {
+  form#search {
+    position: absolute;
+    top: -2.5rem;
+    left: 0;
+    width: 100%;
+    transition: top 0.15s ease-out;
+  }
+}
+form#search > div {
+  position: relative;
+  margin-left: 10px;
+}
+@media (max-width: 599px) {
+  form#search > div {
+    margin-right: 10px;
+  }
+}
+form#search > div > input {
+  width: 20vw;
+  transition: width 0.5s 0.25s ease, background-color 0.5s 0.25s ease;
+  border: 1px solid gray;
+  padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border-radius: 0.9rem;
+}
+@media (max-width: 599px) {
+  form#search > div > input {
+    background-color: var(--bgSearchBar);
+    width: 100%;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+}
+form#search > div > input:placeholder-shown {
+  font-style: italic;
+}
+form#search > div > input:focus {
+  width: 35vw;
+  outline: none;
+  background-color: var(--bgSearchBar);
+}
+@media (max-width: 599px) {
+  form#search > div > input:focus {
+    width: 100%;
+  }
+}
+form#search > div > input:focus + label {
+  opacity: 0;
+}
+form#search > div > input:focus + label + span {
+  opacity: 0.7;
+}
+form#search > div > label {
+  position: absolute;
+  top: 0.4rem;
+  left: 10px;
+  display: block;
+  color: gray;
+  opacity: 0.5;
+  font-style: italic;
+  font-size: 1rem;
+  transition: opacity 0.5s 0.25s ease;
+  cursor: text;
+}
+form#search > div > span {
+  position: absolute;
+  top: 0.4rem;
+  right: 5px;
+  display: block;
+  color: gray;
+  opacity: 0;
+  transition: opacity 0.5s 0.25s ease;
+}
+
+/*# sourceMappingURL=style.css.map */
