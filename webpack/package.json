@@ -5,13 +5,15 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "webpack"
+    "bundle": "webpack",
+    "wpwatch": "webpack --watch"
   },
   "author": "asak84 <cauecpl@gmail.com>",
   "license": "ISC",
   "homepage": "https://github.com/asaks84/odin-exercises#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",

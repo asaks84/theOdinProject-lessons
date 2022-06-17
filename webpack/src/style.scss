@@ -1,10 +1,28 @@
-body{
+body {
     background-color: red;
 }
-div{
-    background-color: white;
 
-    &>p{
+div {
+    background-color: white;
+    text-align: center;
+
+    &>p {
         color: red;
     }
+
+    &>div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px 0;
+        justify-content: center;
+
+        &>div {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+        }
+    }
+
+    
 }
