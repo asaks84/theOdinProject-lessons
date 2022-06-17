@@ -1,14 +1,21 @@
-import myName from './myName';
-// Lodash, now imported by this script
+import showMessage from './newDependance';
+import "./style.scss";
+import imgLogo from './tictaclogo.png'
 
 function component() {
-    const element = document.createElement('div');
-
-    // use your function!
-    element.textContent = myName('Cody');
-    return element;
-  }
-
+  const elementDiv = document.createElement('div');
+  const para = document.createElement('p');
   
-  document.body.appendChild(component());
-  
+  const logoImg = new Image();
+  logoImg.src = imgLogo;
+
+  para.textContent = showMessage('from Assets with webpack --watch');
+  para.innerHTML += "<br><br>";
+
+  elementDiv.appendChild(para);
+  elementDiv.appendChild(logoImg)
+  return elementDiv;
+};
+
+
+document.body.appendChild(component());
