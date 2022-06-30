@@ -6,23 +6,23 @@ const colorPicker = document.querySelector('input[type=color]');
 const sizeSelect = document.querySelector('input[type=range]');
 const onClick = document.querySelector('input[type=checkbox]');
 
-let click = false;
-document.body.onmouseup = function changeFalse() { click = false; };
-document.body.onmousedown = function changeTrue() { click = true; };
-
-// DEFAULTS
+// DEFAULT ELEMENTS
 
 const defaultMode = controls[0];
 const defaultSize = 32;
 const defaultColor = '#525252';
 const eraser = '#dbdbdb';
+let click = false;
 
-// INIT
+//
+// APP
+//
 
 let option = document.querySelector('input[name=control]:checked').value;
 let size = defaultSize;
 let color = defaultColor;
-sizeSelect.value = defaultSize;
+
+// Basic Color Functions
 
 function setColor(newColor) {
   color = newColor;
@@ -36,6 +36,9 @@ function rainbow() {
   return color;
 }
 
+colorPicker.setAttribute('value', defaultColor);
+colorPicker.onchange = (e) => setColor(e.target.value);
+
 function changeColor(e) {
   if (onClick.checked && e.type === 'mouseover' && !click) return;
   if (option === 'rainbow') {
@@ -44,7 +47,9 @@ function changeColor(e) {
   this.style.backgroundColor = color;
 }
 
-// SETTINGS FUNCTIONS
+//
+// GRID FUNCTIONS
+//
 
 function gridGenerator(gridSize) {
   const area = gridSize * gridSize;
@@ -54,8 +59,14 @@ function gridGenerator(gridSize) {
 
   for (let i = 1; i <= area; i += 1) {
     const gridContent = document.createElement('div');
+
     gridContent.addEventListener('mouseover', changeColor);
     gridContent.addEventListener('mousedown', changeColor);
+
+    // prevent to not drag item
+    gridContent.addEventListener('dragstart', (e) => { e.preventDefault(); });
+    gridContent.addEventListener('drop', (e) => { e.preventDefault(); });
+
     grid.appendChild(gridContent);
   }
 }
@@ -72,9 +83,9 @@ function setGridSize(e) {
   clearGrid();
 }
 
-colorPicker.setAttribute('value', defaultColor);
-colorPicker.onchange = (e) => setColor(e.target.value);
-sizeSelect.addEventListener('input', (e) => setGridSize(e.target.value));
+//
+// APP OPTIONS
+//
 
 function setMode() {
   option = document.querySelector('input[name=control]:checked').value;
@@ -91,8 +102,6 @@ function setMode() {
   }
 }
 
-// GRID CHANGES
-
 function restart() {
   size = defaultSize;
   sizeSelect.value = defaultSize;
@@ -102,7 +111,21 @@ function restart() {
   onClick.click();
 }
 
+// ADD FUNCTIONS ON CONTROLS
+
 reset.addEventListener('click', restart);
 clear.addEventListener('click', clearGrid);
 controls.forEach((e) => e.addEventListener('click', setMode));
+
+// Adjust grid size
+sizeSelect.addEventListener('input', (e) => setGridSize(e.target.value));
+
+// Set initial value into range grid input
+sizeSelect.value = defaultSize;
+
+// Make it to change when mouse button is clicked
+document.body.onmouseup = function changeFalse() { click = false; };
+document.body.onmousedown = function changeTrue() { click = true; };
+
+// start app
 gridGenerator(size);
