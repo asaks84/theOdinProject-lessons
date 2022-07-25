@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Form Validation with JS and CSS</title>
+ <link rel="stylesheet" href="style.css">
+ <script src="./script.js" defer></script>
+</head>
+
+<body>
+ <form action="#0">
+
+  <div>
+   <input type="text" id="first_name" name="first_name" required placeholder=" " />
+   <label for="first_name">First Name</label>
+   <div class="error"></div>
+  </div>
+
+  <div>
+   <input type="text" id="last_name" name="last_name" required placeholder=" " />
+   <label for="last_name">Last Name</label>
+   <div class="error"></div>
+  </div>
+
+  <div>
+   <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
+    placeholder=" " />
+   <label for="email">Email Address</label>
+   <div class="error"></div>
+  </div>
+
+  <div>
+   <input type="password" id="password" name="password" required placeholder=" "
+    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+   <label for="password">Password</label>
+   <div class="error"></div>
+  </div>
+
+  <input type="submit" value="Sign Up" />
+
+ </form>
+</body>
+
+</html>
