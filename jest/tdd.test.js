@@ -1,6 +1,8 @@
 import math from './calculator';
 import captalize from './captalize';
+import reverse from './reverse';
 
+// math tests
 test('math add (2 + 3)', () => {
   expect(math.add(2, 3)).toBe(5);
 });
@@ -25,14 +27,37 @@ test('non number test add', () => {
   expect(math.add('abc', 'def')).toBe('invalid');
 });
 
-test('Captalize word', () => {
-  expect(captalize('cauê')).toBe('Cauê');
-});
+// captalize tests
+describe('Reverse string', () => {
+  test('Captalize word', () => {
+    expect(captalize('cauê')).toBe('Cauê');
+  });
 
-test('Captalize phrase', () => {
-  expect(captalize('cauê lindão')).toBe('Cauê Lindão');
-});
+  test('Captalize phrase', () => {
+    expect(captalize('cauê lindão')).toBe('Cauê Lindão');
+  });
 
-test('Captalize phrase with punctuation', () => {
-  expect(captalize("f*#k, i'm hungry!")).toBe("F*#k, I'm Hungry!");
+  test('Captalize phrase with punctuation', () => {
+    expect(captalize("f*#k, i'm hungry!")).toBe("F*#k, I'm Hungry!");
+  });
+
+  // reverse string tests
+  test('Reverses phrase with punctuation', () => {
+    expect(reverse("f*#k, i'm hungry!")).toBe("!yrgnuh m'i ,k#*f");
+  });
+
+  test('reverses single word', () => {
+    expect(reverse('hello')).toEqual('olleh');
+  });
+
+  test('reverses multiple words', () => {
+    expect(reverse('hello there')).toEqual('ereht olleh');
+  });
+
+  test('reverse works with numbers and punctuation', () => {
+    expect(reverse('123! abc!')).toEqual('!cba !321');
+  });
+  test('reverse works with blank strings', () => {
+    expect(reverse('')).toEqual('');
+  });
 });
