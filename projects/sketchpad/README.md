@@ -7,10 +7,7 @@ Create a webpage with a 16x16 grid of square divs. Create the divs using JavaScr
 <br><br>
 
 >(Optional): Instead of just changing the color of a square from black to white (for example), have each pass through with the mouse change it to a completely random RGB value.
-
 <br>
-Then try having each pass just add another 10% of black to it so 
-that only after 10 passes is the square completely black.
+<br>
 
-<hr>
 [Live Preview](https://asaks84.github.io/theOdinProject-lessons/projects/sketchpad/)
